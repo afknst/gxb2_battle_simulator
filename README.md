@@ -1,2 +1,28 @@
 # gxb2_battle_simulator
 Battle simulator for GxB2
+
+## Principles
+ 1. No modification/distribution of the decompiled code (just soft link them).
+ 1. For private use only.
+ 1. Avoid external dependencies if possible.
+ 1. Both `EN` and `CN` for `tables.lua`.
+ 1. Only `EN` for the other files.
+
+## To-do list
+- [x] PvP
+- [x] EvE
+- [ ] PvE
+- [ ] [Multithreading](http://lualanes.github.io/lanes/)
+- [ ] [EA](https://en.wikipedia.org/wiki/Evolutionary_algorithm)
+
+## Examples
+### PvP
+`lua gxb2_battle.lua`
+
+### EvE
+`lua sports.lua`
+
+### PvE
+Combine them.
+
+## [Troubleshooting](https://en.wikipedia.org/wiki/Do_it_yourself)
