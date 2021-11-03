@@ -220,6 +220,61 @@ function PvP_params(tA, tB)
     }
 end
 
+function PvE_params(tA, tB)
+    data = {}
+    data.battle_type = xyd.ReportBattleType.NORMAL
+
+    local strB = tB.str
+    local posB = tB.pos
+
+    local herosA = {}
+    local herosB = {}
+
+    for i = 1, #tA.girls do
+        local hero = ReportHero.new()
+        local ai = girl_params(tA.girls[i])
+
+        if ai.isMonster then
+            hero:populateWithTableID(ai.table_id, ai)
+        else
+            hero:populate(ai)
+        end
+        table.insert(herosA, hero)
+    end
+
+    for i = 1, #strB do
+        local hero = ReportHero.new()
+
+        hero:populateWithTableID(strB[i], {
+            pos = posB[i]
+        })
+        print(hero:getName())
+        table.insert(herosB, hero)
+    end
+
+    local petA, petB = nil
+
+    local data_petA = pet_params(tA.servant)
+    if tostring(data_petA) ~= "" and data_petA.pet_id ~= nil then
+        local pet = ReportPet.new()
+        pet:populate(data_petA)
+        petA = pet
+    end
+
+    return {
+        battle_type = data.battle_type,
+        herosA = herosA,
+        herosB = herosB,
+        petA = petA,
+        petB = petB,
+        guildSkillsA = tA.guild_skills,
+        guildSkillsB = tB.guild_skills or {},
+        god_skills = data.god_skills or {},
+        battleID = 0,
+        random_seed = 0,
+    }
+end
+
 function createReport(params, random_seed)
     params.random_seed = random_seed
     local reporter = BattleCreateReport.new(params)

@@ -11,7 +11,7 @@ Battle simulator for GxB2
 ## To-do list
 - [x] PvP
 - [x] EvE
-- [ ] PvE
+- [x] PvE
 - [ ] [Multithreading](http://lualanes.github.io/lanes/)
 - [ ] [EA](https://en.wikipedia.org/wiki/Evolutionary_algorithm)
 
@@ -27,6 +27,6 @@ Currently we only need to link 4 directories: `app`, `base`, `data`, and `lib`. 
 `lua sports.lua`
 
 ### PvE
-Combine them.
+`lua PvE.lua`
 
 ## [Troubleshooting](https://en.wikipedia.org/wiki/Do_it_yourself)
