@@ -39,3 +39,8 @@ luac.out
 *.x86_64
 *.hex
 
+# Symlinks
+app/
+base/
+data/
+lib/
