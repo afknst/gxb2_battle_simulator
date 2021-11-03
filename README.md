@@ -17,8 +17,8 @@ Battle simulator for GxB2
 
 ## Examples
 ### Symlinks
-Currently we only need to link 4 directories: `app`, `base`, `data`, and `lib`.
-E.g. `ln -s <DECOMPILED CODE/src/app> <HERE/app>`
+Currently we only need to link 4 directories: `app`, `base`, `data`, and `lib`. E.g.:    
+`ln -s <DECOMPILED CODE/src/app> <HERE/app>`
 
 ### PvP
 `lua gxb2_battle.lua`
