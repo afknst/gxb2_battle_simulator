@@ -57,14 +57,14 @@ end
 
 function girl_params(t0)
     assert(t0.pos)
-    assert(t0.name)
+    --assert(t0.name)
     assert(t0.potentials)
-    assert(t0.excursion)
+    --assert(t0.excursion)
 
     t0.gear_skill = t0.gear_skill or 0
     t0.lv = t0.lv or 330
     t0.grade = t0.grade or 6
-    t0.table_id = assert(GIRLS_10[t0.name])
+    t0.table_id = t0.id or assert(GIRLS_10[t0.name])
     t0.awake = t0.awake or 5
     t0.ver = xyd.tables.partnerTable:getVer(t0.table_id)
     t0.love_point = t0.love_point or 100
@@ -101,9 +101,9 @@ function pet_params(t0)
     assert(t0.UC)
     t0.pet_id = assert(SERVANTS[t0.name])
     t0.grade = 4
-    t0.lv = 180
+    t0.lv = t0.lv or 180
     local aura_lv = 30 + 5 * math.floor(t0.UC / 25)
-    t0.skills = {aura_lv, aura_lv, aura_lv, aura_lv}
+    t0.skills = t0.skills or {aura_lv, aura_lv, aura_lv, aura_lv}
     t0.ex_lv = t0.UC
     t0.ver = xyd.tables.petTable:getVer(t0.pet_id)
     return t0
@@ -223,6 +223,8 @@ end
 function PvE_params(tA, tB)
     data = {}
     data.battle_type = xyd.ReportBattleType.NORMAL
+    --data.battle_type = xyd.ReportBattleType.GUILD_BOSS
+    --data.battle_type = xyd.ReportBattleType.TRIAL_NEW
 
     local strB = tB.str
     local posB = tB.pos
@@ -248,7 +250,10 @@ function PvE_params(tA, tB)
         hero:populateWithTableID(strB[i], {
             pos = posB[i]
         })
-        print(hero:getName())
+		if i == 1 then
+			io.write(hero:getLevel().." ")
+		end
+        io.write((hero:getName() or " ").." ")
         table.insert(herosB, hero)
     end
 
@@ -269,7 +274,8 @@ function PvE_params(tA, tB)
         petB = petB,
         guildSkillsA = tA.guild_skills,
         guildSkillsB = tB.guild_skills or {},
-        god_skills = data.god_skills or {},
+        god_skills = tA.god_skills or {},
+        weather = tA.weather or {},
         battleID = 0,
         random_seed = 0,
     }
@@ -327,6 +333,22 @@ function round_m(num)
     return (m - m%0.01).."m"
 end
 
+function round_b(num)
+    local m = num / 1e9
+    return (m - m%0.01).."b"
+end
+
+function round_n(num)
+    if num >= 1000000000 then
+		return round_b(num)
+	elseif num >= 1000000 then
+		return round_m(num)
+	else
+		return num
+	end
+end
+
+local peak = 0;
 function fight(params, seeds, verbose, msg)
     local M = #seeds
     local report = {
@@ -349,12 +371,25 @@ function fight(params, seeds, verbose, msg)
             else
                 win_msg = win_msg.."["..seed.."]"
             end
+			
+			local total = 0
+			for i = 1, #ri.hurts do
+				if i <= 6 then
+					total = total + ri.hurts[i].hurt
+				end
+			end
+			
             if ri.isWin == 1 then
-                win_msg = win_msg.."\tWIN\t"..ri.total_round.." Rounds\t"..i.."/"..M
+                win_msg = win_msg.."\tWIN\t"..ri.total_round.." Rounds\t"..i.."/"..M.."\t"..round_n(total)
             else
-                win_msg = win_msg.."\tLOSE\t"..ri.total_round.." Rounds\t"..i.."/"..M
+                win_msg = win_msg.."\tLOSE\t"..ri.total_round.." Rounds\t"..i.."/"..M.."\t"..round_n(total)
             end
-            print(win_msg)
+			
+			if peak < total then
+				peak = total
+			end
+            
+			print(win_msg)
         end
         for j = 1, #ri.hurts do
             local hj = ri.hurts[j]
@@ -396,9 +431,13 @@ function get_report(report, _print)
     log = log.."\n"..s
     if _print then print(s) end
 
+    local total = 0
     for i = 1, #report.hurts do
         local hi = report.hurts[i]
-        s = round_m(hi.hurt).."\t\t"..round_m(hi.heal)
+        s = round_n(hi.hurt).."\t\t"..round_n(hi.heal)
+		if i <= 6 then
+			total = total + hi.hurt
+		end
         if i == 6 or i == 12 then
             s = s.."\n"..repeat_char("-", 30)
         end
@@ -406,5 +445,5 @@ function get_report(report, _print)
         if _print then print(s) end
     end
 
-    return log.."\n"..repeat_char("=", 30).."\n\n"
+    return log.."\n"..repeat_char("=", 30).."\n".."Total Damage = "..round_n(total).." - Peak Damage = "..round_n(peak).."\n\n"
 end
