@@ -30,6 +30,14 @@ function repeat_char(char, times)
     return s
 end
 
+function range(length, sth)
+    local res = {}
+    for i = 1, length do
+        res[i] = sth or i
+    end
+    return res
+end
+
 function save(_string, _file)
     local output = assert(io.open(_file, "a"))
     io.output(output)
@@ -64,6 +72,7 @@ function girl_params(t0)
     t0.gear_skill = t0.gear_skill or 0
     t0.lv = t0.lv or 330
 
+    local ind = 3
     if t0.star then
         if t0.star <= 5 then
             ind = 1
@@ -74,12 +83,10 @@ function girl_params(t0)
             t0.awake = 0
             t0.grade = 6
         else
-            ind = 3
             t0.awake = t0.star - 10
             t0.grade = 6
         end
     else
-        ind = 3
         t0.awake = t0.awake or 5
         t0.grade = t0.grade or 6
     end
@@ -133,8 +140,30 @@ local ReportHero = import("lib.battle.ReportHero")
 local ReportPet = import("lib.battle.ReportPet")
 local BattleCreateReport = import("lib.battle.BattleCreateReport")
 
+function battle_opponents(id)
+    local data = {}
+    data.str = xyd.tables.battleTable:getMonsters(id)
+    data.pos = xyd.tables.battleTable:getStands(id)
+    return data
+end
+
+function OCE_opponents(season)
+    local _start = (season % 2) * 25 + 1
+    local _end = _start + 24
+    local opponents = {}
+    for i = _start, _end do
+        local id = xyd.tables.oldBuildingStageTable:getBattleId(i)
+        local floor = xyd.tables.oldBuildingStageTable:getFloor(i)
+        if not opponents[floor] then
+            opponents[floor] = {}
+        end
+        table.insert(opponents[floor], battle_opponents(id))
+    end
+    return opponents
+end
+
 function sports_params(TA, TB)
-    data = {}
+    local data = {}
     data.battle_type = xyd.ReportBattleType.NORMAL
 
     local strA = TA.str
@@ -239,8 +268,8 @@ function PvP_params(tA, tB)
     }
 end
 
-function PvE_params(tA, tB)
-    data = {}
+function PvE_params(tA, tB, quiet)
+    local data = {}
     data.battle_type = xyd.ReportBattleType.NORMAL
     --data.battle_type = xyd.ReportBattleType.GUILD_BOSS
     --data.battle_type = xyd.ReportBattleType.TRIAL_NEW
@@ -263,6 +292,7 @@ function PvE_params(tA, tB)
         table.insert(herosA, hero)
     end
 
+    local msg = ""
     for i = 1, #strB do
         local hero = ReportHero.new()
 
@@ -270,10 +300,13 @@ function PvE_params(tA, tB)
             pos = posB[i],
         })
         if i == 1 then
-            io.write(hero:getLevel() .. " ")
+            msg = msg .. hero:getLevel() .. " "
         end
-        io.write((hero:getName() or " ") .. " ")
+        msg = msg .. (hero:getName() or " ") .. " "
         table.insert(herosB, hero)
+    end
+    if not quiet then
+        print(msg)
     end
 
     local petA, petB = nil, nil
@@ -323,7 +356,7 @@ function print_girls(params)
         print("SPD:", hero.totalAttrs_.spd)
     end
     if reporter.petB_ then
-        pet_name = xyd.tables.petTable:getName(reporter.petB_.petID_)
+        local pet_name = xyd.tables.petTable:getName(reporter.petB_.petID_)
         print("\nDefender: " .. pet_name .. " UC" .. reporter.petB_.exLevel_)
     end
     for k, hero in ipairs(reporter.herosB) do
@@ -336,13 +369,14 @@ function print_girls(params)
 end
 
 function get_seeds(M)
-    math.randomseed(os.time())
+    local time = os.time()
+    math.randomseed(time)
     math.random()
     math.random()
     math.random()
     local seeds = {}
     for i = 1, M do
-        seeds[i] = math.random(1, os.time())
+        seeds[i] = math.random(1, time)
     end
     return seeds
 end
@@ -363,26 +397,56 @@ function round_n(num)
     elseif num >= 1000000 then
         return round_m(num)
     else
-        return num
+        return (num - num % 0.01)
     end
 end
 
 -- alignment: 'left' or 'right'
 function fixed_length(sth, length, alignment)
-    str = tostring(sth)
-    size = #str
+    local str = tostring(sth)
+    local size = #str
     assert(size <= length)
-    padding = repeat_char(" ", length - size)
+    local padding = repeat_char(" ", length - size)
     if alignment == "right" then
         return padding .. str
     end
     return str .. padding
 end
 
+function join(list, sep)
+    local msg = ""
+    sep = sep or ""
+    for i = 1, #list do
+        msg = msg .. list[i]
+        if i ~= #list then
+            msg = msg .. sep
+        end
+    end
+    return msg
+end
+
+function get_sig(params)
+    local res = range(14, "")
+    for i = 1, #params.herosA do
+        res[params.herosA[i].pos] = params.herosA[i]:getName()
+    end
+    for i = 1, #params.herosB do
+        res[params.herosB[i].pos + 6] = params.herosB[i]:getName()
+    end
+    if params.petA and params.petA.petID_ then
+        res[13] = xyd.tables.petTable:getName(params.petA.petID_)
+    end
+    if params.petB and params.petB.petID_ then
+        res[14] = xyd.tables.petTable:getName(params.petB.petID_)
+    end
+    return res
+end
+
 function fight(params, seeds, verbose, msg)
     local M = #seeds
     local report = {
         M = M,
+        sig = get_sig(params),
         hurts = {},
         wins = 0,
         rounds = 0,
@@ -471,18 +535,26 @@ function fight(params, seeds, verbose, msg)
 end
 
 function get_report(report)
-    local log = repeat_char("=", 30) .. "\n"
-    local s = "Rounds: " .. report.rounds
+    local width = 15
+    local log = repeat_char("=", 3 * width) .. "\n"
+    local s = fixed_length("ROUNDS", width) .. fixed_length(report.rounds, width)
 
     log = log .. s
 
-    s = "Win rate: "
-        .. report.wins
+    s = fixed_length("WIN RATE", width)
+        .. fixed_length(("%.4g"):format(report.wins), width)
         .. "\n"
-        .. repeat_char("-", 30)
+        .. fixed_length("TOTAL", width)
+        .. fixed_length(round_n(report.total), width)
         .. "\n"
-        .. fixed_length("DMG", 15)
-        .. fixed_length("HEAL", 15)
+        .. fixed_length("PEAK", width)
+        .. fixed_length(round_n(report.peak), width)
+        .. "\n"
+        .. repeat_char("-", 3 * width)
+        .. "\n"
+        .. fixed_length("NAME", width)
+        .. fixed_length("DMG", width)
+        .. fixed_length("HEAL", width)
         .. "\n"
     log = log .. "\n" .. s
 
@@ -491,21 +563,16 @@ function get_report(report)
             break
         end
         local hi = report.hurts[i]
-        s = fixed_length(round_n(hi.hurt), 15) .. fixed_length(round_n(hi.heal), 15)
+        s = fixed_length(report.sig[i], width)
+            .. fixed_length(round_n(hi.hurt), width)
+            .. fixed_length(round_n(hi.heal), width)
         if i == 6 or i == 12 then
-            s = s .. "\n" .. repeat_char("-", 30)
+            s = s .. "\n" .. repeat_char("-", 3 * width)
         end
         log = log .. "\n" .. s
     end
 
-    return log
-        .. "\n"
-        .. repeat_char("=", 30)
-        .. "\n"
-        .. fixed_length("TOTAL", 15)
-        .. fixed_length(round_n(report.total), 15)
-        .. "\n"
-        .. fixed_length("PEAK", 15)
-        .. fixed_length(round_n(report.peak), 15)
-        .. "\n\n"
+    return log .. "\n" .. repeat_char("=", 3 * width) .. "\n\n"
 end
+
+local init = get_seeds(5)

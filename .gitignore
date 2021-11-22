@@ -47,3 +47,6 @@ lib
 
 # vscode
 .vscode
+
+# logs
+log_Af
