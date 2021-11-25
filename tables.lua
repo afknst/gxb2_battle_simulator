@@ -149,6 +149,7 @@ ANTIQUES = {
     ["浮華虛言"] = 6724,
     ["死神之聲"] = 6730,
     ["黃泉挽香"] = 6736,
+    ["無序暴徒"] = 6742,
     ["命運魂晶 P1"] = 64361,
     ["命運魂晶 P2"] = 64362,
     ["命運魂晶 P3"] = 64363,
@@ -194,7 +195,9 @@ ANTIQUES = {
     ["黃泉挽香 P1"] = 67361,
     ["黃泉挽香 P2"] = 67362,
     ["黃泉挽香 P3"] = 67363,
-
+    ["無序暴徒 P1"] = 67421,
+    ["無序暴徒 P2"] = 67422,
+    ["無序暴徒 P3"] = 67423,
     ["Afterglow"] = 6000,
     ["Chalk"] = 6016,
     ["Stool"] = 6017,
@@ -324,6 +327,7 @@ ANTIQUES = {
     ["Deception"] = 6724,
     ["Reaper's Voice"] = 6730,
     ["Nightshade"] = 6736,
+    ["Tool of Trade"] = 6742,
     ["Fate Crystal P1"] = 64361,
     ["Fate Crystal P2"] = 64362,
     ["Fate Crystal P3"] = 64363,
@@ -369,6 +373,9 @@ ANTIQUES = {
     ["Nightshade P1"] = 67361,
     ["Nightshade P2"] = 67362,
     ["Nightshade P3"] = 67363,
+    ["Tool of Trade P1"] = 67421,
+    ["Tool of Trade P2"] = 67422,
+    ["Tool of Trade P3"] = 67423,
 }
 
 CORES = {
@@ -604,7 +611,6 @@ CORES = {
     ["PINK3 暴擊/破甲"] = 5770,
     ["PINK3 神聖傷害/技能傷害率"] = 5771,
     ["PINK3 暴擊/精準"] = 5772,
-
     ["BLUE1 Attack"] = 5107,
     ["BLUE1 HP"] = 5108,
     ["BLUE2 Attack"] = 5115,

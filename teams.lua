@@ -1,18 +1,18 @@
 local Apate = {
     name = "Apate",
-    potentials = {3, 3, 3, 3, 2},
+    potentials = { 3, 3, 3, 3, 2 },
     excursion = 4,
     gear_skill = 3,
-    core = "Speed/HP",
+    core = "PINK3 Speed/HP",
     antique = "Deception",
 }
 
 local Vivian = {
     name = "Vivian",
-    potentials = {1, 3, 3, 1, 2},
+    potentials = { 1, 3, 3, 1, 2 },
     excursion = 1,
     gear_skill = 2,
-    core = "HP/HP",
+    core = "PINK3 HP/HP",
     antique = "Eternal Dawn P3",
 }
 
