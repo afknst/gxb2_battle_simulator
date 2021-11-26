@@ -5,8 +5,7 @@ UnityEngine = { SystemInfo = {} }
 XYDDef = { isH5 = function() end }
 xyd = {}
 
-date = os.date("[%Y_%m_%d][%H_%M_%S]")
-
+require("utilities")
 require("app.common.enums")
 require("app.common.storage.Global")
 require("app.common.Battle")
@@ -22,45 +21,10 @@ xyd.TableManager = require("app.common.tables.TableManager")
 xyd.TableManager.get()
 require("tables")
 
-function repeat_char(char, times)
-    local s = ""
-    for i = 1, times do
-        s = s .. char
-    end
-    return s
-end
-
-function range(length, sth)
-    local res = {}
-    for i = 1, length do
-        res[i] = sth or i
-    end
-    return res
-end
-
-function save(_string, _file)
-    local output = assert(io.open(_file, "a"))
-    io.output(output)
-    io.write(_string)
-    io.close(output)
-end
-
 function put(t0, pos)
     local t1 = clone(t0)
     t1.pos = pos
     return t1
-end
-
-function switch(c0)
-    return {
-        type = c0.type,
-        teamA = c0.teamB,
-        teamB = c0.teamA,
-        petA = c0.petB,
-        petB = c0.petA,
-        guildSkillsA = c0.guildSkillsB,
-        guildSkillsB = c0.guildSkillsA,
-    }
 end
 
 function girl_params(t0)
@@ -368,63 +332,6 @@ function print_girls(params)
     end
 end
 
-function get_seeds(M)
-    local time = os.time()
-    math.randomseed(time)
-    math.random()
-    math.random()
-    math.random()
-    local seeds = {}
-    for i = 1, M do
-        seeds[i] = math.random(1, time)
-    end
-    return seeds
-end
-
-function round_m(num)
-    local m = num / 1e6
-    return (m - m % 0.01) .. "m"
-end
-
-function round_b(num)
-    local m = num / 1e9
-    return (m - m % 0.01) .. "b"
-end
-
-function round_n(num)
-    if num >= 1000000000 then
-        return round_b(num)
-    elseif num >= 1000000 then
-        return round_m(num)
-    else
-        return (num - num % 0.01)
-    end
-end
-
--- alignment: 'left' or 'right'
-function fixed_length(sth, length, alignment)
-    local str = tostring(sth)
-    local size = #str
-    assert(size <= length)
-    local padding = repeat_char(" ", length - size)
-    if alignment == "right" then
-        return padding .. str
-    end
-    return str .. padding
-end
-
-function join(list, sep)
-    local msg = ""
-    sep = sep or ""
-    for i = 1, #list do
-        msg = msg .. list[i]
-        if i ~= #list then
-            msg = msg .. sep
-        end
-    end
-    return msg
-end
-
 function get_sig(params)
     local res = range(14, "")
     for i = 1, #params.herosA do
@@ -574,5 +481,3 @@ function get_report(report)
 
     return log .. "\n" .. repeat_char("=", 3 * width) .. "\n\n"
 end
-
-local init = get_seeds(5)
