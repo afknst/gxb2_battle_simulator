@@ -55,6 +55,8 @@ function girl_params(t0)
         t0.grade = t0.grade or 6
     end
 
+    -- id, pos, lv, love_point, ex_skills, potentials, travel, gear_skill, equips
+
     t0.table_id = t0.id or assert(xyd.tables.partnerTable:getTableIDByName(assert(t0.name)))[ind]
     t0.ver = xyd.tables.partnerTable:getVer(t0.table_id)
     t0.love_point = t0.love_point or 100
@@ -332,7 +334,7 @@ function print_girls(params)
     end
 end
 
-function get_sig(params)
+function get_names(params)
     local res = range(14, "")
     for i = 1, #params.herosA do
         res[params.herosA[i].pos] = params.herosA[i]:getName()
@@ -353,13 +355,14 @@ function fight(params, seeds, verbose, msg)
     local M = #seeds
     local report = {
         M = M,
-        sig = get_sig(params),
-        hurts = {},
+        names = get_names(params),
         wins = 0,
         rounds = 0,
         seeds = seeds,
         total = 0,
         peak = 0,
+        hurts = range(15, 0),
+        heals = range(15, 0),
     }
 
     for i = 1, M do
@@ -372,19 +375,13 @@ function fight(params, seeds, verbose, msg)
 
         for j = 1, #ri.hurts do
             local hj = ri.hurts[j]
-            if j <= 6 then
+
+            if hj.pos <= 6 then
                 total = total + hj.hurt
             end
 
-            if report.hurts[hj.pos] then
-                report.hurts[hj.pos].heal = report.hurts[hj.pos].heal + hj.heal
-                report.hurts[hj.pos].hurt = report.hurts[hj.pos].hurt + hj.hurt
-            else
-                report.hurts[hj.pos] = {
-                    heal = hj.heal,
-                    hurt = hj.hurt,
-                }
-            end
+            report.hurts[hj.pos] = report.hurts[hj.pos] + hj.hurt
+            report.heals[hj.pos] = report.heals[hj.pos] + hj.heal
         end
 
         report.total = report.total + total
@@ -424,31 +421,26 @@ function fight(params, seeds, verbose, msg)
             print(win_msg)
         end
     end
-    for pos, hurts in ipairs(report.hurts) do
-        hurts.hurt = hurts.hurt / M
-        hurts.heal = hurts.heal / M
-        -- if verbose then
-        --     print(pos, round_m(hurts.hurt), round_m(hurts.heal))
-        -- end
+    for i = 1, 15 do
+        report.hurts[i] = report.hurts[i] / M
+        report.heals[i] = report.heals[i] / M
     end
     report.rounds = report.rounds / M
     report.wins = report.wins / M
     report.total = report.total / M
-    -- if verbose then
-    --     print("Average rounds:", report.rounds)
-    --     print("Win rate:", report.wins)
-    -- end
+
     return report
 end
 
 function get_report(report)
     local width = 15
     local log = repeat_char("=", 3 * width) .. "\n"
-    local s = fixed_length("ROUNDS", width) .. fixed_length(report.rounds, width)
 
-    log = log .. s
-
-    s = fixed_length("WIN RATE", width)
+    log = log
+        .. fixed_length("ROUNDS", width)
+        .. fixed_length(report.rounds, width)
+        .. "\n"
+        .. fixed_length("WIN RATE", width)
         .. fixed_length(("%.4g"):format(report.wins), width)
         .. "\n"
         .. fixed_length("TOTAL", width)
@@ -462,22 +454,21 @@ function get_report(report)
         .. fixed_length("NAME", width)
         .. fixed_length("DMG", width)
         .. fixed_length("HEAL", width)
-        .. "\n"
-    log = log .. "\n" .. s
+        .. "\n\n"
 
-    for i = 1, #report.hurts do
-        if i == 15 then
-            break
+    for i = 1, 14 do
+        if report.names[i] ~= "" then
+            local hurt, heal = report.hurts[i], report.heals[i]
+            log = log
+                .. fixed_length(report.names[i], width)
+                .. fixed_length(round_n(hurt), width)
+                .. fixed_length(round_n(heal), width)
+                .. "\n"
         end
-        local hi = report.hurts[i]
-        s = fixed_length(report.sig[i], width)
-            .. fixed_length(round_n(hi.hurt), width)
-            .. fixed_length(round_n(hi.heal), width)
         if i == 6 or i == 12 then
-            s = s .. "\n" .. repeat_char("-", 3 * width)
+            log = log .. repeat_char("-", 3 * width) .. "\n"
         end
-        log = log .. "\n" .. s
     end
 
-    return log .. "\n" .. repeat_char("=", 3 * width) .. "\n\n"
+    return log .. repeat_char("=", 3 * width) .. "\n\n"
 end

@@ -1,4 +1,4 @@
-date = os.date("[%Y_%m_%d][%H_%M_%S]")
+PREFIX = os.date("[%Y_%m_%d][%H_%M_%S]")
 
 function repeat_char(char, times)
     local s = ""
@@ -23,15 +23,21 @@ function save(_string, _file)
     io.close(output)
 end
 
+function init(seed, ind)
+    seed = seed or os.time()
+    seed = math.randomseed(seed)
+    seed = math.random()
+    seed = math.random()
+    seed = math.random()
+    if ind then
+        PREFIX = PREFIX .. "[" .. ind .. "]"
+    end
+end
+
 function get_seeds(M)
-    local time = os.time()
-    local _ = math.randomseed(time)
-    _ = math.random()
-    _ = math.random()
-    _ = math.random()
     local seeds = {}
     for i = 1, M do
-        seeds[i] = math.random(1, time)
+        seeds[i] = math.random(1, 2 ^ 23)
     end
     return seeds
 end
@@ -79,5 +85,3 @@ function join(list, sep)
     end
     return msg
 end
-
-get_seeds(5)
