@@ -19,7 +19,7 @@ To create a soft link, for example: `ln -s <DECOMPILED CODE/src/app> <HERE/app>`
 - [ ] [EA](https://en.wikipedia.org/wiki/Evolutionary_algorithm) ([#5](https://github.com/afknst/gxb2_battle_simulator/issues/5))
 
 ## Dependencies
-[Lua](https://www.lua.org) and [cjson](https://www.kyne.com.au/~mark/software/lua-cjson.php) is required by the original code.   
+[Lua](https://www.lua.org) and [cjson](https://www.kyne.com.au/~mark/software/lua-cjson.php) are required by the original code.   
 For multiprocessing, we use a [Python](https://www.python.org) wrapper with the following packages: [pexpect](https://github.com/pexpect/pexpect) and [numpy](https://numpy.org).
 
 We may use these packages as well in the future: [sqlite](https://www.sqlite.org/index.html), [lsqlite3](http://lua.sqlite.org/index.cgi/ticket), and [pandas](https://pandas.pydata.org).  
