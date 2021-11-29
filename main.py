@@ -31,21 +31,50 @@ class GxB2:
         while not np.all(self.fin):
             self.check()
 
-    def send(self, lua_code):
+    def send_string(self, lua_code: str):
         sent = [False] * self.n
-
-        if isinstance(lua_code, str):
-            lua_code = [lua_code] * self.n
 
         while not np.all(sent):
             for i in range(self.n):
                 if not sent[i]:
                     if self.fin[i]:
-                        self.lua[i].sendline(lua_code[i])
+                        self.lua[i].sendline(lua_code)
                         sent[i] = True
                         self.fin[i] = False
                     else:
                         self.check()
+
+    def send_list(self, lua_code: list, ordered=True):
+        if ordered:
+            sent = [False] * self.n
+            while not np.all(sent):
+                for i in range(self.n):
+                    if not sent[i]:
+                        if self.fin[i]:
+                            self.lua[i].sendline(lua_code[i])
+                            sent[i] = True
+                            self.fin[i] = False
+                        else:
+                            self.check()
+        else:
+            for code in lua_code:
+                sent = False
+                while not sent:
+                    self.check()
+                    for i in range(self.n):
+                        if self.fin[i]:
+                            self.lua[i].sendline(code)
+                            sent = True
+                            self.fin[i] = False
+                            break
+
+    def send(self, lua_code, ordered=True):
+        if isinstance(lua_code, str):
+            self.send_string(lua_code)
+        elif isinstance(lua_code, list):
+            if len(lua_code) != self.n:
+                ordered = False
+            self.send_list(lua_code, ordered=ordered)
 
     def close(self):
         self.wait()
