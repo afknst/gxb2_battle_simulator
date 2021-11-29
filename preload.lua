@@ -368,6 +368,36 @@ function print_girls(params)
     end
 end
 
+function get_girl_params(params)
+    local reporter = BattleCreateReport.new(params)
+    reporter:setupConfig()
+    reporter:setupBasicData()
+    out = ""
+    if reporter.petA_ then
+        local pet_name = xyd.tables.petTable:getName(reporter.petA_.petID_)
+        out = out .. "Attacker: " .. pet_name .. " UC" .. reporter.petA_.exLevel_ .. "\n"
+    end
+    for k, hero in ipairs(reporter.herosA) do
+        out = out .. hero:getName() .. "---------------------------------------\n"
+        out = out .. "HP:" .. hero.totalAttrs_.hp .. "\n"
+        out = out .. "ATK:" .. hero.totalAttrs_.atk .. "\n"
+        out = out .. "ARM:" .. hero.totalAttrs_.arm .. "\n"
+        out = out .. "SPD:" .. hero.totalAttrs_.spd .. "\n"
+    end
+    if reporter.petB_ then
+        local pet_name = xyd.tables.petTable:getName(reporter.petB_.petID_)
+        out = out .. "\nDefender: " .. pet_name .. " UC" .. reporter.petB_.exLevel_ .. "\n"
+    end
+    for k, hero in ipairs(reporter.herosB) do
+        out = out .. hero:getName() .. "---------------------------------------\n"
+        out = out .. "HP:" .. hero.totalAttrs_.hp .. "\n"
+        out = out .. "ATK:" .. hero.totalAttrs_.atk .. "\n"
+        out = out .. "ARM:" .. hero.totalAttrs_.arm .. "\n"
+        out = out .. "SPD:" .. hero.totalAttrs_.spd .. "\n"
+    end
+    return out
+end
+
 function get_seeds(M)
     local time = os.time()
     math.randomseed(time)
