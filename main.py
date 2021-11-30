@@ -1,7 +1,21 @@
 import sys
+import sqlite3
+from pathlib import Path
 
 import pexpect
 import numpy as np
+import pandas as pd
+
+DB = Path("./data.sqlite3")
+TABLE = 'TEST'
+CONN = sqlite3.connect(DB)
+ENTRIES = ", ".join([
+    "id INTEGER PRIMARY KEY",
+    "win INTEGER",
+])
+C = CONN.cursor()
+C.execute(f"CREATE TABLE IF NOT EXISTS {TABLE} ({ENTRIES});")
+DB_CODE = f'submit("INSERT INTO {TABLE} VALUES (NULL, " .. report.isWin .. ");")'
 
 
 class GxB2:
@@ -76,6 +90,16 @@ class GxB2:
                 ordered = False
             self.send_list(lua_code, ordered=ordered)
 
+    def seeds(self, M):
+        return self.rng.integers(2**23, size=M)
+
+    def fight(self, M):
+        lua_code = [
+            f'report = createReport(params, {_}); {DB_CODE}'
+            for _ in self.seeds(M)
+        ]
+        self.send(lua_code, ordered=False)
+
     def close(self):
         self.wait()
         for lua in self.lua:
@@ -85,8 +109,10 @@ class GxB2:
 if __name__ == '__main__':
     G = GxB2()
     G.set_logfile(sys.stdout.buffer)
-    G.send('main = require("gxb2_battle")')
-    G.send('main()')
-    G.send('main()')
-    G.send('main()')
+    G.send('params = require("gxb2_battle")')
+    G.fight(100)
     G.close()
+
+    T = pd.read_sql(f"SELECT * FROM {TABLE}", CONN)
+    T.info()
+    print(np.mean(T.win))

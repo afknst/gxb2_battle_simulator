@@ -2,694 +2,694 @@
 
 require("preload")
 
-local teams = require("teams")
+-- local teams = require("teams")
 
 local M = 100
 local SEEDS = get_seeds(M)
 
-local TA = teams[1]
+-- local TA = teams[1]
 
 local Mika = {
-	girls = {
-		{
-			name = "Mika",
-			pos = 1,
-			potentials = { 1, 3, 3, 1, 2 },
-			excursion = 1,
-			equip = { 1065, 2066, 3065, 4066 }, --5656
-			--equip = {1066, 2166, 3066, 4166}, --6C6C
-			core = "DJ6HP",
-			--antique = "Black Magic Hat",
-			antique = "Thorn's Heart P1",
-		},
-	},
-	servant = {
-		name = "Deerling",
-		lv = 1,
-		UC = 0,
-		skills = { 0, 0, 0, 0 },
-	},
-	guild_skills = GUILD_1ST_PAGE,
+    girls = {
+        {
+            name = "Mika",
+            pos = 1,
+            potentials = { 1, 3, 3, 1, 2 },
+            excursion = 1,
+            equip = { 1065, 2066, 3065, 4066 }, --5656
+            --equip = {1066, 2166, 3066, 4166}, --6C6C
+            core = "DJ6HP",
+            --antique = "Black Magic Hat",
+            antique = "Thorn's Heart P1",
+        },
+    },
+    servant = {
+        name = "Deerling",
+        lv = 1,
+        UC = 0,
+        skills = { 0, 0, 0, 0 },
+    },
+    guild_skills = GUILD_1ST_PAGE,
 }
 local Neph = {
-	girls = {
-		{
-			name = "Nephilim",
-			pos = 1,
-			potentials = { 1, 3, 3, 1, 2 },
-			excursion = 1,
-			equip = { 1065, 2066, 3065, 4066 }, --5656
-			--equip = {1066, 2166, 3066, 4166}, --6C6C
-			core = "DJ6HP",
-			antique = "Black Magic Hat",
-		},
-	},
-	servant = {
-		name = "Deerling",
-		lv = 1,
-		UC = 0,
-		skills = { 0, 0, 0, 0 },
-	},
-	guild_skills = GUILD_1ST_PAGE,
+    girls = {
+        {
+            name = "Nephilim",
+            pos = 1,
+            potentials = { 1, 3, 3, 1, 2 },
+            excursion = 1,
+            equip = { 1065, 2066, 3065, 4066 }, --5656
+            --equip = {1066, 2166, 3066, 4166}, --6C6C
+            core = "DJ6HP",
+            antique = "Black Magic Hat",
+        },
+    },
+    servant = {
+        name = "Deerling",
+        lv = 1,
+        UC = 0,
+        skills = { 0, 0, 0, 0 },
+    },
+    guild_skills = GUILD_1ST_PAGE,
 }
 local Vivian = {
-	girls = {
-		{
-			name = "Vivian",
-			pos = 1,
-			potentials = { 1, 3, 3, 1, 2 },
-			excursion = 1,
-			equip = { 1065, 2066, 3065, 4066 }, --5656
-			--equip = {1066, 2166, 3066, 4166}, --6C6C
-			core = "DJ6HP",
-			antique = "Magic Hat",
-		},
-	},
-	servant = {
-		name = "Deerling",
-		lv = 1,
-		UC = 0,
-		skills = { 0, 0, 0, 0 },
-	},
-	guild_skills = GUILD_1ST_PAGE,
+    girls = {
+        {
+            name = "Vivian",
+            pos = 1,
+            potentials = { 1, 3, 3, 1, 2 },
+            excursion = 1,
+            equip = { 1065, 2066, 3065, 4066 }, --5656
+            --equip = {1066, 2166, 3066, 4166}, --6C6C
+            core = "DJ6HP",
+            antique = "Magic Hat",
+        },
+    },
+    servant = {
+        name = "Deerling",
+        lv = 1,
+        UC = 0,
+        skills = { 0, 0, 0, 0 },
+    },
+    guild_skills = GUILD_1ST_PAGE,
 }
 local Fenrir = {
-	girls = {
-		{
-			name = "Fenrir",
-			pos = 1,
-			potentials = { 1, 3, 1, 1, 2 },
-			excursion = 1,
-			equip = { 1065, 2066, 3065, 4066 }, --5656
-			--equip = {1066, 2166, 3066, 4166}, --6C6C
-			core = "DJ6HP",
-			antique = "Magic Hat",
-		},
-	},
-	servant = {
-		name = "Deerling",
-		lv = 1,
-		UC = 0,
-		skills = { 0, 0, 0, 0 },
-	},
-	guild_skills = GUILD_1ST_PAGE,
+    girls = {
+        {
+            name = "Fenrir",
+            pos = 1,
+            potentials = { 1, 3, 1, 1, 2 },
+            excursion = 1,
+            equip = { 1065, 2066, 3065, 4066 }, --5656
+            --equip = {1066, 2166, 3066, 4166}, --6C6C
+            core = "DJ6HP",
+            antique = "Magic Hat",
+        },
+    },
+    servant = {
+        name = "Deerling",
+        lv = 1,
+        UC = 0,
+        skills = { 0, 0, 0, 0 },
+    },
+    guild_skills = GUILD_1ST_PAGE,
 }
 local Rogue = {
-	girls = {
-		{
-			name = "Rogue",
-			pos = 1,
-			potentials = { 2, 2, 3, 2, 2 },
-			excursion = 2,
-			equip = { 1066, 2066, 3066, 4066 }, --6666
-			core = "DJ6Atk",
-			--antique = "Thorn's Heart",
-			--antique = "Seal Sword·Human", --Anti-Warrior
-			--antique = "Sealed Heart·Human", --Anti-Mage
-			antique = "Key to Heaven",
-		},
-	},
-	servant = {
-		name = "Deerling",
-		lv = 1,
-		UC = 0,
-		skills = { 0, 0, 0, 0 },
-	},
-	guild_skills = GUILD_1ST_PAGE,
+    girls = {
+        {
+            name = "Rogue",
+            pos = 1,
+            potentials = { 2, 2, 3, 2, 2 },
+            excursion = 2,
+            equip = { 1066, 2066, 3066, 4066 }, --6666
+            core = "DJ6Atk",
+            --antique = "Thorn's Heart",
+            --antique = "Seal Sword·Human", --Anti-Warrior
+            --antique = "Sealed Heart·Human", --Anti-Mage
+            antique = "Key to Heaven",
+        },
+    },
+    servant = {
+        name = "Deerling",
+        lv = 1,
+        UC = 0,
+        skills = { 0, 0, 0, 0 },
+    },
+    guild_skills = GUILD_1ST_PAGE,
 }
 local Diana = {
-	girls = {
-		{
-			name = "Diana",
-			pos = 1,
-			potentials = { 2, 2, 3, 2, 2 },
-			excursion = 2,
-			equip = { 1066, 2066, 3066, 4066 }, --6666
-			core = "DJ6Atk",
-			antique = "Thorn's Heart",
-			--antique = "Thorn's Heart P1",
-		},
-	},
-	servant = {
-		name = "Deerling",
-		lv = 1,
-		UC = 0,
-		skills = { 0, 0, 0, 0 },
-	},
-	guild_skills = GUILD_1ST_PAGE,
+    girls = {
+        {
+            name = "Diana",
+            pos = 1,
+            potentials = { 2, 2, 3, 2, 2 },
+            excursion = 2,
+            equip = { 1066, 2066, 3066, 4066 }, --6666
+            core = "DJ6Atk",
+            antique = "Thorn's Heart",
+            --antique = "Thorn's Heart P1",
+        },
+    },
+    servant = {
+        name = "Deerling",
+        lv = 1,
+        UC = 0,
+        skills = { 0, 0, 0, 0 },
+    },
+    guild_skills = GUILD_1ST_PAGE,
 }
 local Estel = {
-	girls = {
-		{
-			name = "Estel",
-			pos = 1,
-			potentials = { 2, 2, 3, 2, 2 },
-			excursion = 2,
-			equip = { 1066, 2066, 3066, 4066 }, --6666
-			core = "DJ6Atk",
-			antique = "Thorn's Heart",
-		},
-	},
-	servant = {
-		name = "Deerling",
-		lv = 1,
-		UC = 0,
-		skills = { 0, 0, 0, 0 },
-	},
-	guild_skills = GUILD_1ST_PAGE,
+    girls = {
+        {
+            name = "Estel",
+            pos = 1,
+            potentials = { 2, 2, 3, 2, 2 },
+            excursion = 2,
+            equip = { 1066, 2066, 3066, 4066 }, --6666
+            core = "DJ6Atk",
+            antique = "Thorn's Heart",
+        },
+    },
+    servant = {
+        name = "Deerling",
+        lv = 1,
+        UC = 0,
+        skills = { 0, 0, 0, 0 },
+    },
+    guild_skills = GUILD_1ST_PAGE,
 }
 local Kratos = {
-	girls = {
-		{
-			name = "Kratos",
-			pos = 1,
-			potentials = { 2, 2, 3, 2, 2 },
-			excursion = 2,
-			equip = { 1066, 2066, 3066, 4066 }, --6666
-			core = "DJ6Atk",
-			antique = "Thorn's Heart",
-			--antique = "Fusion Umbrella",
-		},
-	},
-	servant = {
-		name = "Deerling",
-		lv = 1,
-		UC = 0,
-		skills = { 0, 0, 0, 0 },
-	},
-	guild_skills = GUILD_1ST_PAGE,
+    girls = {
+        {
+            name = "Kratos",
+            pos = 1,
+            potentials = { 2, 2, 3, 2, 2 },
+            excursion = 2,
+            equip = { 1066, 2066, 3066, 4066 }, --6666
+            core = "DJ6Atk",
+            antique = "Thorn's Heart",
+            --antique = "Fusion Umbrella",
+        },
+    },
+    servant = {
+        name = "Deerling",
+        lv = 1,
+        UC = 0,
+        skills = { 0, 0, 0, 0 },
+    },
+    guild_skills = GUILD_1ST_PAGE,
 }
 local Sivney = {
-	girls = {
-		{
-			name = "Sivney",
-			pos = 1,
-			potentials = { 2, 2, 3, 2, 2 },
-			excursion = 2,
-			equip = { 1066, 2066, 3066, 4066 }, --6666
-			core = "DJ6Atk",
-			antique = "Thorn's Heart",
-		},
-	},
-	servant = {
-		name = "Deerling",
-		lv = 1,
-		UC = 0,
-		skills = { 0, 0, 0, 0 },
-	},
-	guild_skills = GUILD_1ST_PAGE,
+    girls = {
+        {
+            name = "Sivney",
+            pos = 1,
+            potentials = { 2, 2, 3, 2, 2 },
+            excursion = 2,
+            equip = { 1066, 2066, 3066, 4066 }, --6666
+            core = "DJ6Atk",
+            antique = "Thorn's Heart",
+        },
+    },
+    servant = {
+        name = "Deerling",
+        lv = 1,
+        UC = 0,
+        skills = { 0, 0, 0, 0 },
+    },
+    guild_skills = GUILD_1ST_PAGE,
 }
 local SivneyD = {
-	girls = {
-		{
-			name = "Sivney",
-			pos = 1,
-			potentials = { 1, 3, 3, 1, 2 },
-			excursion = 1,
-			equip = { 1065, 2066, 3065, 4066 }, --5656
-			--equip = {1066, 2166, 3066, 4166}, --6C6C
-			core = "DJ6HP",
-			antique = "Black Magic Hat",
-		},
-	},
-	servant = {
-		name = "Deerling",
-		lv = 1,
-		UC = 0,
-		skills = { 0, 0, 0, 0 },
-	},
-	guild_skills = GUILD_1ST_PAGE,
+    girls = {
+        {
+            name = "Sivney",
+            pos = 1,
+            potentials = { 1, 3, 3, 1, 2 },
+            excursion = 1,
+            equip = { 1065, 2066, 3065, 4066 }, --5656
+            --equip = {1066, 2166, 3066, 4166}, --6C6C
+            core = "DJ6HP",
+            antique = "Black Magic Hat",
+        },
+    },
+    servant = {
+        name = "Deerling",
+        lv = 1,
+        UC = 0,
+        skills = { 0, 0, 0, 0 },
+    },
+    guild_skills = GUILD_1ST_PAGE,
 }
 local VeraA = {
-	girls = {
-		{
-			name = "Vera",
-			pos = 1,
-			potentials = { 2, 2, 3, 2, 2 },
-			excursion = 2,
-			equip = { 1066, 2066, 3066, 4066 }, --6666
-			core = "DJ6Atk",
-			antique = "Thorn's Heart",
-		},
-	},
-	servant = {
-		name = "Deerling",
-		lv = 1,
-		UC = 0,
-		skills = { 0, 0, 0, 0 },
-	},
-	guild_skills = GUILD_1ST_PAGE,
+    girls = {
+        {
+            name = "Vera",
+            pos = 1,
+            potentials = { 2, 2, 3, 2, 2 },
+            excursion = 2,
+            equip = { 1066, 2066, 3066, 4066 }, --6666
+            core = "DJ6Atk",
+            antique = "Thorn's Heart",
+        },
+    },
+    servant = {
+        name = "Deerling",
+        lv = 1,
+        UC = 0,
+        skills = { 0, 0, 0, 0 },
+    },
+    guild_skills = GUILD_1ST_PAGE,
 }
 local VeraD = {
-	girls = {
-		{
-			name = "Vera",
-			pos = 1,
-			potentials = { 1, 3, 3, 1, 2 },
-			excursion = 1,
-			equip = { 1065, 2066, 3065, 4066 }, --5656
-			--equip = {1066, 2166, 3066, 4166}, --6C6C
-			core = "DJ6HP",
-			antique = "Black Magic Hat",
-		},
-	},
-	servant = {
-		name = "Deerling",
-		lv = 1,
-		UC = 0,
-		skills = { 0, 0, 0, 0 },
-	},
-	guild_skills = GUILD_1ST_PAGE,
+    girls = {
+        {
+            name = "Vera",
+            pos = 1,
+            potentials = { 1, 3, 3, 1, 2 },
+            excursion = 1,
+            equip = { 1065, 2066, 3065, 4066 }, --5656
+            --equip = {1066, 2166, 3066, 4166}, --6C6C
+            core = "DJ6HP",
+            antique = "Black Magic Hat",
+        },
+    },
+    servant = {
+        name = "Deerling",
+        lv = 1,
+        UC = 0,
+        skills = { 0, 0, 0, 0 },
+    },
+    guild_skills = GUILD_1ST_PAGE,
 }
 local Blair = {
-	girls = {
-		{
-			name = "Blair",
-			pos = 1,
-			potentials = { 2, 2, 3, 2, 2 },
-			excursion = 2,
-			equip = { 1066, 2066, 3066, 4066 }, --6666
-			core = "DJ6Atk",
-			antique = "Thorn's Heart",
-		},
-	},
-	servant = {
-		name = "Deerling",
-		lv = 1,
-		UC = 0,
-		skills = { 0, 0, 0, 0 },
-	},
-	guild_skills = GUILD_1ST_PAGE,
+    girls = {
+        {
+            name = "Blair",
+            pos = 1,
+            potentials = { 2, 2, 3, 2, 2 },
+            excursion = 2,
+            equip = { 1066, 2066, 3066, 4066 }, --6666
+            core = "DJ6Atk",
+            antique = "Thorn's Heart",
+        },
+    },
+    servant = {
+        name = "Deerling",
+        lv = 1,
+        UC = 0,
+        skills = { 0, 0, 0, 0 },
+    },
+    guild_skills = GUILD_1ST_PAGE,
 }
 local VH = {
-	girls = {
-		{
-			name = "Von Helsing",
-			pos = 1,
-			potentials = { 2, 2, 3, 2, 2 },
-			excursion = 2,
-			equip = { 1066, 2066, 3066, 4066 }, --6666
-			core = "DJ6Atk",
-			antique = "Thorn's Heart",
-		},
-	},
-	servant = {
-		name = "Deerling",
-		lv = 1,
-		UC = 0,
-		skills = { 0, 0, 0, 0 },
-	},
-	guild_skills = GUILD_1ST_PAGE,
+    girls = {
+        {
+            name = "Von Helsing",
+            pos = 1,
+            potentials = { 2, 2, 3, 2, 2 },
+            excursion = 2,
+            equip = { 1066, 2066, 3066, 4066 }, --6666
+            core = "DJ6Atk",
+            antique = "Thorn's Heart",
+        },
+    },
+    servant = {
+        name = "Deerling",
+        lv = 1,
+        UC = 0,
+        skills = { 0, 0, 0, 0 },
+    },
+    guild_skills = GUILD_1ST_PAGE,
 }
 local VHD = {
-	girls = {
-		{
-			name = "Von Helsing",
-			pos = 1,
-			potentials = { 1, 3, 3, 1, 2 },
-			excursion = 1,
-			equip = { 1065, 2066, 3065, 4066 }, --5656
-			--equip = {1066, 2166, 3066, 4166}, --6C6C
-			core = "DJ6HP",
-			antique = "Black Magic Hat",
-		},
-	},
-	servant = {
-		name = "Deerling",
-		lv = 1,
-		UC = 0,
-		skills = { 0, 0, 0, 0 },
-	},
-	guild_skills = GUILD_1ST_PAGE,
+    girls = {
+        {
+            name = "Von Helsing",
+            pos = 1,
+            potentials = { 1, 3, 3, 1, 2 },
+            excursion = 1,
+            equip = { 1065, 2066, 3065, 4066 }, --5656
+            --equip = {1066, 2166, 3066, 4166}, --6C6C
+            core = "DJ6HP",
+            antique = "Black Magic Hat",
+        },
+    },
+    servant = {
+        name = "Deerling",
+        lv = 1,
+        UC = 0,
+        skills = { 0, 0, 0, 0 },
+    },
+    guild_skills = GUILD_1ST_PAGE,
 }
 local Angelica = {
-	girls = {
-		{
-			name = "Angelica",
-			pos = 1,
-			potentials = { 2, 2, 3, 2, 2 },
-			excursion = 2,
-			equip = { 1066, 2066, 3066, 4066 }, --6666
-			core = "DJ6Atk",
-			antique = "Thorn's Heart",
-		},
-	},
-	servant = {
-		name = "Deerling",
-		lv = 1,
-		UC = 0,
-		skills = { 0, 0, 0, 0 },
-	},
-	guild_skills = GUILD_1ST_PAGE,
+    girls = {
+        {
+            name = "Angelica",
+            pos = 1,
+            potentials = { 2, 2, 3, 2, 2 },
+            excursion = 2,
+            equip = { 1066, 2066, 3066, 4066 }, --6666
+            core = "DJ6Atk",
+            antique = "Thorn's Heart",
+        },
+    },
+    servant = {
+        name = "Deerling",
+        lv = 1,
+        UC = 0,
+        skills = { 0, 0, 0, 0 },
+    },
+    guild_skills = GUILD_1ST_PAGE,
 }
 local AngelicaD = {
-	girls = {
-		{
-			name = "Angelica",
-			pos = 1,
-			potentials = { 1, 3, 3, 1, 2 },
-			excursion = 1,
-			equip = { 1065, 2066, 3065, 4066 }, --5656
-			--equip = {1066, 2166, 3066, 4166}, --6C6C
-			core = "DJ6HP",
-			antique = "Black Magic Hat",
-		},
-	},
-	servant = {
-		name = "Deerling",
-		lv = 1,
-		UC = 0,
-		skills = { 0, 0, 0, 0 },
-	},
-	guild_skills = GUILD_1ST_PAGE,
+    girls = {
+        {
+            name = "Angelica",
+            pos = 1,
+            potentials = { 1, 3, 3, 1, 2 },
+            excursion = 1,
+            equip = { 1065, 2066, 3065, 4066 }, --5656
+            --equip = {1066, 2166, 3066, 4166}, --6C6C
+            core = "DJ6HP",
+            antique = "Black Magic Hat",
+        },
+    },
+    servant = {
+        name = "Deerling",
+        lv = 1,
+        UC = 0,
+        skills = { 0, 0, 0, 0 },
+    },
+    guild_skills = GUILD_1ST_PAGE,
 }
 local BlairD = {
-	girls = {
-		{
-			name = "Blair",
-			pos = 1,
-			potentials = { 1, 3, 3, 1, 2 },
-			excursion = 1,
-			equip = { 1065, 2066, 3065, 4066 }, --5656
-			--equip = {1066, 2166, 3066, 4166}, --6C6C
-			core = "DJ6HP",
-			antique = "Black Magic Hat",
-		},
-	},
-	servant = {
-		name = "Deerling",
-		lv = 1,
-		UC = 0,
-		skills = { 0, 0, 0, 0 },
-	},
-	guild_skills = GUILD_1ST_PAGE,
+    girls = {
+        {
+            name = "Blair",
+            pos = 1,
+            potentials = { 1, 3, 3, 1, 2 },
+            excursion = 1,
+            equip = { 1065, 2066, 3065, 4066 }, --5656
+            --equip = {1066, 2166, 3066, 4166}, --6C6C
+            core = "DJ6HP",
+            antique = "Black Magic Hat",
+        },
+    },
+    servant = {
+        name = "Deerling",
+        lv = 1,
+        UC = 0,
+        skills = { 0, 0, 0, 0 },
+    },
+    guild_skills = GUILD_1ST_PAGE,
 }
 local Apate = {
-	girls = {
-		{
-			name = "Apate",
-			pos = 1,
-			potentials = { 2, 2, 3, 2, 2 },
-			excursion = 2,
-			equip = { 1066, 2066, 3066, 4066 }, --6666
-			core = "DJ6Atk",
-			antique = "Thorn's Heart",
-		},
-	},
-	servant = {
-		name = "Deerling",
-		lv = 1,
-		UC = 0,
-		skills = { 0, 0, 0, 0 },
-	},
-	guild_skills = GUILD_1ST_PAGE,
+    girls = {
+        {
+            name = "Apate",
+            pos = 1,
+            potentials = { 2, 2, 3, 2, 2 },
+            excursion = 2,
+            equip = { 1066, 2066, 3066, 4066 }, --6666
+            core = "DJ6Atk",
+            antique = "Thorn's Heart",
+        },
+    },
+    servant = {
+        name = "Deerling",
+        lv = 1,
+        UC = 0,
+        skills = { 0, 0, 0, 0 },
+    },
+    guild_skills = GUILD_1ST_PAGE,
 }
 local Joan = {
-	girls = {
-		{
-			name = "Joan",
-			pos = 1,
-			potentials = { 2, 2, 3, 2, 2 },
-			excursion = 2,
-			equip = { 1066, 2066, 3066, 4066 }, --6666
-			core = "DJ6Atk",
-			antique = "Thorn's Heart",
-		},
-	},
-	servant = {
-		name = "Deerling",
-		lv = 1,
-		UC = 0,
-		skills = { 0, 0, 0, 0 },
-	},
-	guild_skills = GUILD_1ST_PAGE,
+    girls = {
+        {
+            name = "Joan",
+            pos = 1,
+            potentials = { 2, 2, 3, 2, 2 },
+            excursion = 2,
+            equip = { 1066, 2066, 3066, 4066 }, --6666
+            core = "DJ6Atk",
+            antique = "Thorn's Heart",
+        },
+    },
+    servant = {
+        name = "Deerling",
+        lv = 1,
+        UC = 0,
+        skills = { 0, 0, 0, 0 },
+    },
+    guild_skills = GUILD_1ST_PAGE,
 }
 local Kassy = {
-	girls = {
-		{
-			name = "Kassy",
-			pos = 1,
-			potentials = { 2, 2, 3, 2, 2 },
-			excursion = 2,
-			equip = { 1066, 2066, 3066, 4066 }, --6666
-			core = "DJ6Atk",
-			antique = "Thorn's Heart",
-		},
-	},
-	servant = {
-		name = "Deerling",
-		lv = 1,
-		UC = 0,
-		skills = { 0, 0, 0, 0 },
-	},
-	guild_skills = GUILD_1ST_PAGE,
+    girls = {
+        {
+            name = "Kassy",
+            pos = 1,
+            potentials = { 2, 2, 3, 2, 2 },
+            excursion = 2,
+            equip = { 1066, 2066, 3066, 4066 }, --6666
+            core = "DJ6Atk",
+            antique = "Thorn's Heart",
+        },
+    },
+    servant = {
+        name = "Deerling",
+        lv = 1,
+        UC = 0,
+        skills = { 0, 0, 0, 0 },
+    },
+    guild_skills = GUILD_1ST_PAGE,
 }
 local Krystal = {
-	girls = {
-		{
-			name = "Krystal",
-			pos = 1,
-			potentials = { 2, 2, 3, 2, 2 },
-			excursion = 2,
-			equip = { 1066, 2066, 3066, 4066 }, --6666
-			core = "DJ6Atk",
-			antique = "Thorn's Heart",
-		},
-	},
-	servant = {
-		name = "Deerling",
-		lv = 1,
-		UC = 0,
-		skills = { 0, 0, 0, 0 },
-	},
-	guild_skills = GUILD_1ST_PAGE,
+    girls = {
+        {
+            name = "Krystal",
+            pos = 1,
+            potentials = { 2, 2, 3, 2, 2 },
+            excursion = 2,
+            equip = { 1066, 2066, 3066, 4066 }, --6666
+            core = "DJ6Atk",
+            antique = "Thorn's Heart",
+        },
+    },
+    servant = {
+        name = "Deerling",
+        lv = 1,
+        UC = 0,
+        skills = { 0, 0, 0, 0 },
+    },
+    guild_skills = GUILD_1ST_PAGE,
 }
 local Aurora = {
-	girls = {
-		{
-			name = "Aurora",
-			pos = 1,
-			potentials = { 2, 2, 3, 2, 2 },
-			excursion = 2,
-			equip = { 1066, 2066, 3066, 4066 }, --6666
-			core = "DJ6Atk",
-			antique = "Thorn's Heart",
-		},
-	},
-	servant = {
-		name = "Deerling",
-		lv = 1,
-		UC = 0,
-		skills = { 0, 0, 0, 0 },
-	},
-	guild_skills = GUILD_1ST_PAGE,
+    girls = {
+        {
+            name = "Aurora",
+            pos = 1,
+            potentials = { 2, 2, 3, 2, 2 },
+            excursion = 2,
+            equip = { 1066, 2066, 3066, 4066 }, --6666
+            core = "DJ6Atk",
+            antique = "Thorn's Heart",
+        },
+    },
+    servant = {
+        name = "Deerling",
+        lv = 1,
+        UC = 0,
+        skills = { 0, 0, 0, 0 },
+    },
+    guild_skills = GUILD_1ST_PAGE,
 }
 local AuroraNB = {
-	girls = {
-		{
-			name = "Aurora",
-			pos = 1,
-			potentials = { 2, 2, 3, 2, 2 },
-			excursion = 2,
-			equip = { 1066, 2066, 3066, 4066 }, --6666
-			core = "DJ6Atk",
-			antique = "Neutron Blades",
-		},
-	},
-	servant = {
-		name = "Deerling",
-		lv = 1,
-		UC = 0,
-		skills = { 0, 0, 0, 0 },
-	},
-	guild_skills = GUILD_1ST_PAGE,
+    girls = {
+        {
+            name = "Aurora",
+            pos = 1,
+            potentials = { 2, 2, 3, 2, 2 },
+            excursion = 2,
+            equip = { 1066, 2066, 3066, 4066 }, --6666
+            core = "DJ6Atk",
+            antique = "Neutron Blades",
+        },
+    },
+    servant = {
+        name = "Deerling",
+        lv = 1,
+        UC = 0,
+        skills = { 0, 0, 0, 0 },
+    },
+    guild_skills = GUILD_1ST_PAGE,
 }
 local Hexa = {
-	girls = {
-		{
-			name = "Hexa",
-			pos = 1,
-			potentials = { 2, 2, 3, 2, 2 },
-			excursion = 2,
-			equip = { 1066, 2066, 3066, 4066 }, --6666
-			core = "DJ6Atk",
-			antique = "Thorn's Heart",
-		},
-	},
-	servant = {
-		name = "Deerling",
-		lv = 1,
-		UC = 0,
-		skills = { 0, 0, 0, 0 },
-	},
-	guild_skills = GUILD_1ST_PAGE,
+    girls = {
+        {
+            name = "Hexa",
+            pos = 1,
+            potentials = { 2, 2, 3, 2, 2 },
+            excursion = 2,
+            equip = { 1066, 2066, 3066, 4066 }, --6666
+            core = "DJ6Atk",
+            antique = "Thorn's Heart",
+        },
+    },
+    servant = {
+        name = "Deerling",
+        lv = 1,
+        UC = 0,
+        skills = { 0, 0, 0, 0 },
+    },
+    guild_skills = GUILD_1ST_PAGE,
 }
 local Alice = {
-	girls = {
-		{
-			name = "Alice",
-			pos = 1,
-			potentials = { 2, 2, 3, 2, 2 },
-			excursion = 2,
-			equip = { 1066, 2066, 3066, 4066 }, --6666
-			core = "DJ6Atk",
-			antique = "Thorn's Heart",
-		},
-	},
-	servant = {
-		name = "Deerling",
-		lv = 1,
-		UC = 0,
-		skills = { 0, 0, 0, 0 },
-	},
-	guild_skills = GUILD_1ST_PAGE,
+    girls = {
+        {
+            name = "Alice",
+            pos = 1,
+            potentials = { 2, 2, 3, 2, 2 },
+            excursion = 2,
+            equip = { 1066, 2066, 3066, 4066 }, --6666
+            core = "DJ6Atk",
+            antique = "Thorn's Heart",
+        },
+    },
+    servant = {
+        name = "Deerling",
+        lv = 1,
+        UC = 0,
+        skills = { 0, 0, 0, 0 },
+    },
+    guild_skills = GUILD_1ST_PAGE,
 }
 local Mio = {
-	girls = {
-		{
-			name = "Mio",
-			pos = 1,
-			potentials = { 1, 3, 3, 1, 2 },
-			excursion = 1,
-			equip = { 1065, 2066, 3065, 4066 }, --5656
-			--equip = {1066, 2166, 3066, 4166}, --6C6C
-			core = "DJ6HP",
-			antique = "Black Magic Hat",
-		},
-	},
-	servant = {
-		name = "Deerling",
-		lv = 1,
-		UC = 0,
-		skills = { 0, 0, 0, 0 },
-	},
-	guild_skills = GUILD_1ST_PAGE,
+    girls = {
+        {
+            name = "Mio",
+            pos = 1,
+            potentials = { 1, 3, 3, 1, 2 },
+            excursion = 1,
+            equip = { 1065, 2066, 3065, 4066 }, --5656
+            --equip = {1066, 2166, 3066, 4166}, --6C6C
+            core = "DJ6HP",
+            antique = "Black Magic Hat",
+        },
+    },
+    servant = {
+        name = "Deerling",
+        lv = 1,
+        UC = 0,
+        skills = { 0, 0, 0, 0 },
+    },
+    guild_skills = GUILD_1ST_PAGE,
 }
 local Phoenix = {
-	girls = {
-		{
-			name = "Phoenix",
-			pos = 1,
-			potentials = { 2, 2, 3, 2, 2 },
-			excursion = 2,
-			equip = { 1066, 2066, 3066, 4066 }, --6666
-			core = "DJ6Atk",
-			antique = "Thorn's Heart",
-		},
-	},
-	servant = {
-		name = "Deerling",
-		lv = 1,
-		UC = 0,
-		skills = { 0, 0, 0, 0 },
-	},
-	guild_skills = GUILD_1ST_PAGE,
+    girls = {
+        {
+            name = "Phoenix",
+            pos = 1,
+            potentials = { 2, 2, 3, 2, 2 },
+            excursion = 2,
+            equip = { 1066, 2066, 3066, 4066 }, --6666
+            core = "DJ6Atk",
+            antique = "Thorn's Heart",
+        },
+    },
+    servant = {
+        name = "Deerling",
+        lv = 1,
+        UC = 0,
+        skills = { 0, 0, 0, 0 },
+    },
+    guild_skills = GUILD_1ST_PAGE,
 }
 local Teresa = {
-	girls = {
-		{
-			name = "Teresa",
-			pos = 1,
-			potentials = { 1, 3, 3, 1, 2 },
-			--potentials = {2, 2, 3, 2, 2},
-			excursion = 1,
-			equip = { 1065, 2066, 3065, 4066 }, --5656
-			--equip = {1066, 2166, 3066, 4166}, --6C6C
-			core = "DJ6HP",
-			--antique = "Black Magic Hat",
-			antique = "Neutron Blades",
-		},
-	},
-	servant = {
-		name = "Deerling",
-		lv = 1,
-		UC = 0,
-		skills = { 0, 0, 0, 0 },
-	},
-	guild_skills = GUILD_1ST_PAGE,
+    girls = {
+        {
+            name = "Teresa",
+            pos = 1,
+            potentials = { 1, 3, 3, 1, 2 },
+            --potentials = {2, 2, 3, 2, 2},
+            excursion = 1,
+            equip = { 1065, 2066, 3065, 4066 }, --5656
+            --equip = {1066, 2166, 3066, 4166}, --6C6C
+            core = "DJ6HP",
+            --antique = "Black Magic Hat",
+            antique = "Neutron Blades",
+        },
+    },
+    servant = {
+        name = "Deerling",
+        lv = 1,
+        UC = 0,
+        skills = { 0, 0, 0, 0 },
+    },
+    guild_skills = GUILD_1ST_PAGE,
 }
 
 local Trinity = {
-	girls = {
-		{
-			name = "Trinity",
-			pos = 1,
-			potentials = { 2, 2, 3, 2, 2 },
-			excursion = 2,
-			equip = { 1066, 2066, 3066, 4066 }, --6666
-			core = "DJ6Atk",
-			antique = "Thorn's Heart",
-		},
-	},
-	servant = {
-		name = "Deerling",
-		lv = 1,
-		UC = 0,
-		skills = { 0, 0, 0, 0 },
-	},
-	guild_skills = GUILD_1ST_PAGE,
+    girls = {
+        {
+            name = "Trinity",
+            pos = 1,
+            potentials = { 2, 2, 3, 2, 2 },
+            excursion = 2,
+            equip = { 1066, 2066, 3066, 4066 }, --6666
+            core = "DJ6Atk",
+            antique = "Thorn's Heart",
+        },
+    },
+    servant = {
+        name = "Deerling",
+        lv = 1,
+        UC = 0,
+        skills = { 0, 0, 0, 0 },
+    },
+    guild_skills = GUILD_1ST_PAGE,
 }
 local TrinityD = {
-	girls = {
-		{
-			name = "Trinity",
-			pos = 1,
-			potentials = { 1, 3, 3, 1, 2 },
-			excursion = 1,
-			equip = { 1065, 2066, 3065, 4066 }, --5656
-			--equip = {1066, 2166, 3066, 4166}, --6C6C
-			core = "DJ6HP",
-			antique = "Black Magic Hat",
-		},
-	},
-	servant = {
-		name = "Deerling",
-		lv = 1,
-		UC = 0,
-		skills = { 0, 0, 0, 0 },
-	},
-	guild_skills = GUILD_1ST_PAGE,
+    girls = {
+        {
+            name = "Trinity",
+            pos = 1,
+            potentials = { 1, 3, 3, 1, 2 },
+            excursion = 1,
+            equip = { 1065, 2066, 3065, 4066 }, --5656
+            --equip = {1066, 2166, 3066, 4166}, --6C6C
+            core = "DJ6HP",
+            antique = "Black Magic Hat",
+        },
+    },
+    servant = {
+        name = "Deerling",
+        lv = 1,
+        UC = 0,
+        skills = { 0, 0, 0, 0 },
+    },
+    guild_skills = GUILD_1ST_PAGE,
 }
 local Holly = {
-	girls = {
-		{
-			name = "Holly",
-			pos = 1,
-			potentials = { 1, 3, 3, 1, 2 },
-			excursion = 1,
-			equip = { 1065, 2066, 3065, 4066 }, --5656
-			--equip = {1066, 2166, 3066, 4166}, --6C6C
-			core = "DJ6HP",
-			antique = "Black Magic Hat",
-		},
-	},
-	servant = {
-		name = "Deerling",
-		lv = 1,
-		UC = 0,
-		skills = { 0, 0, 0, 0 },
-	},
-	guild_skills = GUILD_1ST_PAGE,
+    girls = {
+        {
+            name = "Holly",
+            pos = 1,
+            potentials = { 1, 3, 3, 1, 2 },
+            excursion = 1,
+            equip = { 1065, 2066, 3065, 4066 }, --5656
+            --equip = {1066, 2166, 3066, 4166}, --6C6C
+            core = "DJ6HP",
+            antique = "Black Magic Hat",
+        },
+    },
+    servant = {
+        name = "Deerling",
+        lv = 1,
+        UC = 0,
+        skills = { 0, 0, 0, 0 },
+    },
+    guild_skills = GUILD_1ST_PAGE,
 }
 local Succuba = {
-	girls = {
-		{
-			name = "Succuba",
-			pos = 1,
-			potentials = { 2, 2, 3, 2, 2 },
-			excursion = 2,
-			equip = { 1066, 2066, 3066, 4066 }, --6666
-			core = "DJ6Atk",
-			antique = "Thorn's Heart",
-		},
-	},
-	servant = {
-		name = "Deerling",
-		lv = 1,
-		UC = 0,
-		skills = { 0, 0, 0, 0 },
-	},
-	guild_skills = GUILD_1ST_PAGE,
+    girls = {
+        {
+            name = "Succuba",
+            pos = 1,
+            potentials = { 2, 2, 3, 2, 2 },
+            excursion = 2,
+            equip = { 1066, 2066, 3066, 4066 }, --6666
+            core = "DJ6Atk",
+            antique = "Thorn's Heart",
+        },
+    },
+    servant = {
+        name = "Deerling",
+        lv = 1,
+        UC = 0,
+        skills = { 0, 0, 0, 0 },
+    },
+    guild_skills = GUILD_1ST_PAGE,
 }
 
 -- For Energy, Add update Energy at this line in BattleCreateReport.lua

@@ -1,11 +1,11 @@
 require("preload") --https://docs.google.com/spreadsheets/d/1FAw5ttUYoRXvshwFc5CHJQ8h1PDOE38T8grP-Ri1Rag/edit#gid=1463175644
 
-local teams = require("teams")
+-- local teams = require("teams")
 
 local M = 20
 local SEEDS = get_seeds(M)
 
-local TA = teams[1]
+-- local TA = teams[1]
 local TB = {
     str = {
         89099,
@@ -13,62 +13,111 @@ local TB = {
         89100,
         89092,
         89090,
-        89094
+        89094,
     },
-    pos = {1, 2, 3, 4, 5, 6},
+    pos = { 1, 2, 3, 4, 5, 6 },
 }
 
 local GB61 = {
     str = {
-        4113
+        4113,
     },
-    pos = {1},
+    pos = { 1 },
 }
 local Sanct = {
     str = {
-        88001
+        88001,
     },
-    pos = {1},
+    pos = { 1 },
 }
 local EoT = {
     str = {
-        30065
+        30065,
     },
-    pos = {1},
+    pos = { 1 },
 }
 local PWAngelica = {
     str = {
-        9065
+        9065,
     },
-    pos = {1},
+    pos = { 1 },
 }
 local PWKassy = {
     str = {
-        9066
+        9066,
     },
-    pos = {1},
+    pos = { 1 },
 }
 local PWFrexie = {
     str = {
-        9067
+        9067,
     },
-    pos = {1},
+    pos = { 1 },
 }
 local PWNeph = {
     str = {
-        9068
+        9068,
     },
-    pos = {1},
+    pos = { 1 },
 }
 
 local TeamSS = {
     girls = {
-		{name = "Apate", pos = 1, potentials = {2,2,3,2,2}, excursion = 3, gear_skill = 3, core = "Attack/Attack", antique = "P3 The Wings of Icarus",},
-		{name = "Kassy", pos = 2, potentials = {2,2,3,2,2}, excursion = 2, gear_skill = 2, core = "Attack/Attack", antique = "P3 Thorn's Heart",},
-		{name = "Sivney", pos = 3, potentials = {3,3,3,3,2}, excursion = 1, gear_skill = 3, core = "Speed/HP", antique = "P3 Thorn's Heart",},
-		{name = "Izanami", pos = 4, potentials = {2,2,3,2,2}, excursion = 1, gear_skill = 3, core = "Speed/HP", antique = "P3 Neutron Blades",},
-		{name = "Kassy", pos = 5, potentials = {2,2,3,2,2}, excursion = 2, gear_skill = 2, core = "Attack/Attack", antique = "P3 Thorn's Heart",},
-		{name = "Angelica", pos = 6, potentials = {2,2,3,2,2}, excursion = 2, gear_skill = 3, core = "Attack/Attack", antique = "P3 The Wings of Icarus",}},
+        {
+            name = "Apate",
+            pos = 1,
+            potentials = { 2, 2, 3, 2, 2 },
+            excursion = 3,
+            gear_skill = 3,
+            core = "Attack/Attack",
+            antique = "P3 The Wings of Icarus",
+        },
+        {
+            name = "Kassy",
+            pos = 2,
+            potentials = { 2, 2, 3, 2, 2 },
+            excursion = 2,
+            gear_skill = 2,
+            core = "Attack/Attack",
+            antique = "P3 Thorn's Heart",
+        },
+        {
+            name = "Sivney",
+            pos = 3,
+            potentials = { 3, 3, 3, 3, 2 },
+            excursion = 1,
+            gear_skill = 3,
+            core = "Speed/HP",
+            antique = "P3 Thorn's Heart",
+        },
+        {
+            name = "Izanami",
+            pos = 4,
+            potentials = { 2, 2, 3, 2, 2 },
+            excursion = 1,
+            gear_skill = 3,
+            core = "Speed/HP",
+            antique = "P3 Neutron Blades",
+        },
+        {
+            name = "Kassy",
+            pos = 5,
+            potentials = { 2, 2, 3, 2, 2 },
+            excursion = 2,
+            gear_skill = 2,
+            core = "Attack/Attack",
+            antique = "P3 Thorn's Heart",
+        },
+        {
+            name = "Angelica",
+            pos = 6,
+            potentials = { 2, 2, 3, 2, 2 },
+            excursion = 2,
+            gear_skill = 3,
+            core = "Attack/Attack",
+            antique = "P3 The Wings of Icarus",
+        },
+    },
     servant = {
         name = "Hunter",
         UC = 100,
@@ -76,59 +125,66 @@ local TeamSS = {
     guild_skills = GUILD_1ST_PAGE,
 }
 local SalaSS = {
-    girls = {{
-		name = "Apate",
-		pos = 1,
-		potentials = {2, 2, 2, 2, 2},
-		excursion = 2,
-		equip = {1066, 2166, 3066, 4166}, --6C6C
-		core = "Attack/Attack",
-		antique = "Soul Destruction",
-	},{
-		name = "Angelica",
-		pos = 2,
-		potentials = {2, 2, 2, 2, 2},
-		excursion = 2,
-		gear_skill = 3,
-		core = "Attack/Attack",
-		antique = "The Wings of Icarus P3",
-	},{
-		name = "Kassy",
-		pos = 3,
-		potentials = {2, 2, 2, 2, 2},
-		excursion = 2,
-		gear_skill = 3,
-		core = "Attack/Attack",
-		antique = "Fate Crystal P2",
-	},{
-		name = "Linky",
-		pos = 4,
-		lv = 250,
-		awake = 0,
-		potentials = {0, 0, 0, 0, 0},
-		excursion = 1,
-		equip = {1066, 2166, 3066, 4166}, --6C6C
-		core = "HP/HP",
-		antique = "Queen's Crown",
-	},{
-		name = "Sivney",
-		pos = 5,
-		lv = 250,
-		awake = 0,
-		potentials = {0, 0, 0, 0, 0},
-		excursion = 1,
-		gear_skill = 3,
-		core = "HP/HP",
-		antique = "Yume Lantern",
-	},{
-		name = "Izanami",
-		pos = 6,
-		potentials = {3, 3, 3, 3, 2},
-		excursion = 4,
-		gear_skill = 3,
-		core = "Speed/HP",
-		antique = "Fate Crystal P2",
-	}},
+    girls = {
+        {
+            name = "Apate",
+            pos = 1,
+            potentials = { 2, 2, 2, 2, 2 },
+            excursion = 2,
+            equip = { 1066, 2166, 3066, 4166 }, --6C6C
+            core = "Attack/Attack",
+            antique = "Soul Destruction",
+        },
+        {
+            name = "Angelica",
+            pos = 2,
+            potentials = { 2, 2, 2, 2, 2 },
+            excursion = 2,
+            gear_skill = 3,
+            core = "Attack/Attack",
+            antique = "The Wings of Icarus P3",
+        },
+        {
+            name = "Kassy",
+            pos = 3,
+            potentials = { 2, 2, 2, 2, 2 },
+            excursion = 2,
+            gear_skill = 3,
+            core = "Attack/Attack",
+            antique = "Fate Crystal P2",
+        },
+        {
+            name = "Linky",
+            pos = 4,
+            lv = 250,
+            awake = 0,
+            potentials = { 0, 0, 0, 0, 0 },
+            excursion = 1,
+            equip = { 1066, 2166, 3066, 4166 }, --6C6C
+            core = "HP/HP",
+            antique = "Queen's Crown",
+        },
+        {
+            name = "Sivney",
+            pos = 5,
+            lv = 250,
+            awake = 0,
+            potentials = { 0, 0, 0, 0, 0 },
+            excursion = 1,
+            gear_skill = 3,
+            core = "HP/HP",
+            antique = "Yume Lantern",
+        },
+        {
+            name = "Izanami",
+            pos = 6,
+            potentials = { 3, 3, 3, 3, 2 },
+            excursion = 4,
+            gear_skill = 3,
+            core = "Speed/HP",
+            antique = "Fate Crystal P2",
+        },
+    },
     servant = {
         name = "Deerling",
         UC = 70,
@@ -137,59 +193,66 @@ local SalaSS = {
 }
 
 local SalaGB = {
-    girls = {{
-		name = "Angelica",
-		pos = 1,
-		potentials = {2, 2, 3, 2, 2},
-		excursion = 2,
-		gear_skill = 3,
-		core = "Attack/Attack",
-		antique = "The Wings of Icarus P3",
-	},{
-		name = "Blair",
-		pos = 2,
-		potentials = {2, 2, 3, 2, 2},
-		excursion = 2,
-		gear_skill = 3,
-		core = "Attack/Attack",
-		antique = "Soul Destruction",
-	},{
-		name = "Kassy",
-		pos = 3,
-		potentials = {2, 2, 3, 2, 2},
-		excursion = 2,
-		gear_skill = 3,
-		core = "Attack/Attack",
-		antique = "Fate Crystal P2",
-	},{
-		name = "Kassy",
-		pos = 4,
-		lv = 250,
-		awake = 0,
-		potentials = {0, 0, 0, 0, 0},
-		excursion = 1,
-		equip = {1066, 2166, 3066, 4166}, --6C6C
-		core = "HP/HP",
-		antique = "Queen's Crown",
-	},{
-		name = "Sivney",
-		pos = 5,
-		lv = 250,
-		awake = 0,
-		potentials = {0, 0, 0, 0, 0},
-		excursion = 1,
-		gear_skill = 2,
-		core = "HP/HP",
-		antique = "Yume Lantern",
-	},{
-		name = "Frexie",
-		pos = 6,
-		potentials = {1, 1, 3, 0, 0},
-		excursion = 1,
-		gear_star = 6,
-		core = "HP/HP",
-		antique = "Fate Crystal P2",
-	}},
+    girls = {
+        {
+            name = "Angelica",
+            pos = 1,
+            potentials = { 2, 2, 3, 2, 2 },
+            excursion = 2,
+            gear_skill = 3,
+            core = "Attack/Attack",
+            antique = "The Wings of Icarus P3",
+        },
+        {
+            name = "Blair",
+            pos = 2,
+            potentials = { 2, 2, 3, 2, 2 },
+            excursion = 2,
+            gear_skill = 3,
+            core = "Attack/Attack",
+            antique = "Soul Destruction",
+        },
+        {
+            name = "Kassy",
+            pos = 3,
+            potentials = { 2, 2, 3, 2, 2 },
+            excursion = 2,
+            gear_skill = 3,
+            core = "Attack/Attack",
+            antique = "Fate Crystal P2",
+        },
+        {
+            name = "Kassy",
+            pos = 4,
+            lv = 250,
+            awake = 0,
+            potentials = { 0, 0, 0, 0, 0 },
+            excursion = 1,
+            equip = { 1066, 2166, 3066, 4166 }, --6C6C
+            core = "HP/HP",
+            antique = "Queen's Crown",
+        },
+        {
+            name = "Sivney",
+            pos = 5,
+            lv = 250,
+            awake = 0,
+            potentials = { 0, 0, 0, 0, 0 },
+            excursion = 1,
+            gear_skill = 2,
+            core = "HP/HP",
+            antique = "Yume Lantern",
+        },
+        {
+            name = "Frexie",
+            pos = 6,
+            potentials = { 1, 1, 3, 0, 0 },
+            excursion = 1,
+            gear_star = 6,
+            core = "HP/HP",
+            antique = "Fate Crystal P2",
+        },
+    },
     servant = {
         name = "Deerling",
         UC = 70,
@@ -197,7 +260,56 @@ local SalaGB = {
     guild_skills = GUILD_1ST_PAGE,
 }
 local FipiaraGB = {
-    girls = {{name = "Angelica", pos = 1, potentials = {2,2,3,2,2}, travel = 3002, gear_skill = 0, equips = {1369,2369,3369,4369,5749,64423,7212}},{name = "Angelica", pos = 2, potentials = {2,2,3,2,2}, travel = 3002, gear_skill = 0, equips = {1369,2369,3369,4369,5701,6706,7195}},{name = "Frexie", pos = 3, potentials = {2,2,3,2,2}, travel = 3002, gear_skill = 0, equips = {1466,2466,3466,4466,5651,64601,7207}},{name = "Kassy", pos = 4, potentials = {2,2,3,2,2}, travel = 3002, gear_skill = 0, equips = {1466,2466,3466,4466,5651,64362,0}},{name = "Kassy", pos = 5, potentials = {2,2,3,2,2}, travel = 3002, gear_skill = 0, equips = {1469,2469,3469,4469,5641,64483,0}},{name = "Sivney", pos = 6, potentials = {3,3,3,3,2}, travel = 3002, gear_skill = 0, equips = {1569,2569,3569,4569,5754,64362,7211}}},
+    girls = {
+        {
+            name = "Angelica",
+            pos = 1,
+            potentials = { 2, 2, 3, 2, 2 },
+            travel = 3002,
+            gear_skill = 0,
+            equips = { 1369, 2369, 3369, 4369, 5749, 64423, 7212 },
+        },
+        {
+            name = "Angelica",
+            pos = 2,
+            potentials = { 2, 2, 3, 2, 2 },
+            travel = 3002,
+            gear_skill = 0,
+            equips = { 1369, 2369, 3369, 4369, 5701, 6706, 7195 },
+        },
+        {
+            name = "Frexie",
+            pos = 3,
+            potentials = { 2, 2, 3, 2, 2 },
+            travel = 3002,
+            gear_skill = 0,
+            equips = { 1466, 2466, 3466, 4466, 5651, 64601, 7207 },
+        },
+        {
+            name = "Kassy",
+            pos = 4,
+            potentials = { 2, 2, 3, 2, 2 },
+            travel = 3002,
+            gear_skill = 0,
+            equips = { 1466, 2466, 3466, 4466, 5651, 64362, 0 },
+        },
+        {
+            name = "Kassy",
+            pos = 5,
+            potentials = { 2, 2, 3, 2, 2 },
+            travel = 3002,
+            gear_skill = 0,
+            equips = { 1469, 2469, 3469, 4469, 5641, 64483, 0 },
+        },
+        {
+            name = "Sivney",
+            pos = 6,
+            potentials = { 3, 3, 3, 3, 2 },
+            travel = 3002,
+            gear_skill = 0,
+            equips = { 1569, 2569, 3569, 4569, 5754, 64362, 7211 },
+        },
+    },
     servant = {
         name = "Hunter",
         UC = 100,
@@ -207,55 +319,243 @@ local FipiaraGB = {
 
 local TeamSanct = {
     girls = {
-		{name = "Angelica", pos = 1, potentials = {2,2,3,2,2}, excursion = 2, gear_skill = 3, core = "Attack/Attack", antique = "P3 The Wings of Icarus",},
-		{name = "Diana", pos = 2, potentials = {2,2,3,2,2}, excursion = 2, gear_skill = 3, core = "Attack/Attack", antique = "P3 Thorn's Heart",},
-		{name = "Sivney", pos = 3, potentials = {3,3,3,3,2}, excursion = 1, gear_skill = 3, core = "Speed/HP", antique = "P3 Fate Crystal",},
-		{name = "Izanami", pos = 4, potentials = {2,2,3,2,2}, excursion = 1, gear_skill = 3, core = "Speed/HP", antique = "P3 Neutron Blades",},
-		{name = "Kassy", pos = 5, potentials = {2,2,3,2,2}, excursion = 3, gear_skill = 2, core = "Attack/Attack", antique = "P3 Fate Crystal",},
-		{name = "Angelica", pos = 6, potentials = {2,2,3,2,2}, excursion = 2, gear_skill = 3, core = "Attack/Attack", antique = "P3 The Wings of Icarus",}},
+        {
+            name = "Angelica",
+            pos = 1,
+            potentials = { 2, 2, 3, 2, 2 },
+            excursion = 2,
+            gear_skill = 3,
+            core = "Attack/Attack",
+            antique = "P3 The Wings of Icarus",
+        },
+        {
+            name = "Diana",
+            pos = 2,
+            potentials = { 2, 2, 3, 2, 2 },
+            excursion = 2,
+            gear_skill = 3,
+            core = "Attack/Attack",
+            antique = "P3 Thorn's Heart",
+        },
+        {
+            name = "Sivney",
+            pos = 3,
+            potentials = { 3, 3, 3, 3, 2 },
+            excursion = 1,
+            gear_skill = 3,
+            core = "Speed/HP",
+            antique = "P3 Fate Crystal",
+        },
+        {
+            name = "Izanami",
+            pos = 4,
+            potentials = { 2, 2, 3, 2, 2 },
+            excursion = 1,
+            gear_skill = 3,
+            core = "Speed/HP",
+            antique = "P3 Neutron Blades",
+        },
+        {
+            name = "Kassy",
+            pos = 5,
+            potentials = { 2, 2, 3, 2, 2 },
+            excursion = 3,
+            gear_skill = 2,
+            core = "Attack/Attack",
+            antique = "P3 Fate Crystal",
+        },
+        {
+            name = "Angelica",
+            pos = 6,
+            potentials = { 2, 2, 3, 2, 2 },
+            excursion = 2,
+            gear_skill = 3,
+            core = "Attack/Attack",
+            antique = "P3 The Wings of Icarus",
+        },
+    },
     servant = {
         name = "Hunter",
         UC = 100,
     },
     guild_skills = GUILD_1ST_PAGE,
-	god_skills = {11001,11002,11301,11601}, -- Dual Blade, Immunity, Multicast
+    god_skills = { 11001, 11002, 11301, 11601 }, -- Dual Blade, Immunity, Multicast
 }
 local SalaSanct = {
     girls = {
-		{name = "Angelica", pos = 1, potentials = {2,2,3,2,2}, travel = 3002, gear_skill = 3, equips = {1369,2369,3369,4369,5749,64423,7212}},
-		{name = "Diana", pos = 2, potentials = {2,2,3,2,2}, travel = 3002, gear_skill = 0, equips = {1266,2066,3066,4066,5749,64481,0}},
-		{name = "Sivney", pos = 3, potentials = {1,0,0,0,0}, travel = 0, gear_skill = 3, core = "Speed/HP", antique = "P2 Fate Crystal",},
-		{name = "Izanami", pos = 4, potentials = {3,1,3,3,2}, travel = 3004, gear_skill = 3, core = "Speed/HP", antique = "Neutron Blades",},
-		{name = "Kassy", pos = 5, potentials = {3,1,3,3,2}, travel = 0, gear_skill = 3, core = "Speed/HP", antique = "P2 Fate Crystal",},
-		{name = "Kassy", pos = 6, potentials = {0,0,0,0,0}, travel = 2301, gear_skill = 3, core = "Speed/HP", antique = "P2 Fate Crystal",}},
+        {
+            name = "Angelica",
+            pos = 1,
+            potentials = { 2, 2, 3, 2, 2 },
+            travel = 3002,
+            gear_skill = 3,
+            equips = { 1369, 2369, 3369, 4369, 5749, 64423, 7212 },
+        },
+        {
+            name = "Diana",
+            pos = 2,
+            potentials = { 2, 2, 3, 2, 2 },
+            travel = 3002,
+            gear_skill = 0,
+            equips = { 1266, 2066, 3066, 4066, 5749, 64481, 0 },
+        },
+        {
+            name = "Sivney",
+            pos = 3,
+            potentials = { 1, 0, 0, 0, 0 },
+            travel = 0,
+            gear_skill = 3,
+            core = "Speed/HP",
+            antique = "P2 Fate Crystal",
+        },
+        {
+            name = "Izanami",
+            pos = 4,
+            potentials = { 3, 1, 3, 3, 2 },
+            travel = 3004,
+            gear_skill = 3,
+            core = "Speed/HP",
+            antique = "Neutron Blades",
+        },
+        {
+            name = "Kassy",
+            pos = 5,
+            potentials = { 3, 1, 3, 3, 2 },
+            travel = 0,
+            gear_skill = 3,
+            core = "Speed/HP",
+            antique = "P2 Fate Crystal",
+        },
+        {
+            name = "Kassy",
+            pos = 6,
+            potentials = { 0, 0, 0, 0, 0 },
+            travel = 2301,
+            gear_skill = 3,
+            core = "Speed/HP",
+            antique = "P2 Fate Crystal",
+        },
+    },
     servant = {
         name = "Deerling",
         UC = 70,
     },
     guild_skills = GUILD_1ST_PAGE,
-	god_skills = {11001,11002,11301,11601}, -- Dual Blade, Immunity, Multicast
+    god_skills = { 11001, 11002, 11301, 11601 }, -- Dual Blade, Immunity, Multicast
 }
 local FipiaraSanct = {
     girls = {
-{name = "Diana", pos = 1, potentials = {2,2,3,2,2,}, travel = 3002, gear_skill = 3, equips = {1269,2269,3269,4269,5749,64483,0},},
-{name = "Sivney", pos = 2, potentials = {3,3,3,3,2,}, travel = 3001, gear_skill = 3, equips = {1569,2569,3569,4569,5754,64362,7211},},
-{name = "Izanami", pos = 3, potentials = {2,2,3,2,2,}, travel = 3001, gear_skill = 3, equips = {1569,2569,3569,4569,5754,64781,7191},},
-{name = "Angelica", pos = 4, potentials = {2,2,3,2,2,}, travel = 3002, gear_skill = 3, equips = {1369,2369,3369,4369,5749,64423,7212},},
-{name = "Kassy", pos = 5, potentials = {2,2,3,2,2,}, travel = 2903, gear_skill = 2, equips = {1469,2469,3469,4469,5641,6706,0},},
-{name = "Angelica", pos = 6, potentials = {2,2,3,2,2,}, travel = 3002, gear_skill = 3, equips = {1369,2369,3369,4369,5701,6706,7195}}},
+        {
+            name = "Diana",
+            pos = 1,
+            potentials = { 2, 2, 3, 2, 2 },
+            travel = 3002,
+            gear_skill = 3,
+            equips = { 1269, 2269, 3269, 4269, 5749, 64483, 0 },
+        },
+        {
+            name = "Sivney",
+            pos = 2,
+            potentials = { 3, 3, 3, 3, 2 },
+            travel = 3001,
+            gear_skill = 3,
+            equips = { 1569, 2569, 3569, 4569, 5754, 64362, 7211 },
+        },
+        {
+            name = "Izanami",
+            pos = 3,
+            potentials = { 2, 2, 3, 2, 2 },
+            travel = 3001,
+            gear_skill = 3,
+            equips = { 1569, 2569, 3569, 4569, 5754, 64781, 7191 },
+        },
+        {
+            name = "Angelica",
+            pos = 4,
+            potentials = { 2, 2, 3, 2, 2 },
+            travel = 3002,
+            gear_skill = 3,
+            equips = { 1369, 2369, 3369, 4369, 5749, 64423, 7212 },
+        },
+        {
+            name = "Kassy",
+            pos = 5,
+            potentials = { 2, 2, 3, 2, 2 },
+            travel = 2903,
+            gear_skill = 2,
+            equips = { 1469, 2469, 3469, 4469, 5641, 6706, 0 },
+        },
+        {
+            name = "Angelica",
+            pos = 6,
+            potentials = { 2, 2, 3, 2, 2 },
+            travel = 3002,
+            gear_skill = 3,
+            equips = { 1369, 2369, 3369, 4369, 5701, 6706, 7195 },
+        },
+    },
     servant = { name = "Hunter", UC = 100, lv = 180 },
     guild_skills = GUILD_1ST_PAGE,
-	god_skills = {11001,11002,11301,11601}, -- Dual Blade, Immunity, Multicast
+    god_skills = { 11001, 11002, 11301, 11601 }, -- Dual Blade, Immunity, Multicast
 }
 
 local TeamEoT = {
     girls = {
-		{name = "Angelica", pos = 1, potentials = {2,2,3,2,2}, excursion = 2, gear_skill = 3, core = "Attack/Attack", antique = "P3 The Wings of Icarus",},
-		{name = "Angelica", pos = 2, potentials = {2,2,3,2,2}, excursion = 2, gear_skill = 3, core = "Attack/Attack", antique = "P3 The Wings of Icarus",},
-		{name = "Linky", pos = 3, potentials = {2,2,3,2,2}, excursion = 3, gear_skill = 3, core = "Attack/Attack", antique = "P3 Fate Crystal",},
-		{name = "Frexie", pos = 4, potentials = {2,2,3,2,2}, excursion = 3, gear_skill = 3, core = "Speed/Attack", antique = "P3 Fate Crystal",},
-		{name = "Kassy", pos = 5, potentials = {2,2,3,2,2}, excursion = 2, gear_skill = 3, core = "Attack/Attack", antique = "P3 Fate Crystal",},
-		{name = "Sivney", pos = 6, potentials = {2,2,3,2,2}, excursion = 4, gear_skill = 3, core = "Speed/Attack", antique = "P3 Fate Crystal",}},
+        {
+            name = "Angelica",
+            pos = 1,
+            potentials = { 2, 2, 3, 2, 2 },
+            excursion = 2,
+            gear_skill = 3,
+            core = "Attack/Attack",
+            antique = "P3 The Wings of Icarus",
+        },
+        {
+            name = "Angelica",
+            pos = 2,
+            potentials = { 2, 2, 3, 2, 2 },
+            excursion = 2,
+            gear_skill = 3,
+            core = "Attack/Attack",
+            antique = "P3 The Wings of Icarus",
+        },
+        {
+            name = "Linky",
+            pos = 3,
+            potentials = { 2, 2, 3, 2, 2 },
+            excursion = 3,
+            gear_skill = 3,
+            core = "Attack/Attack",
+            antique = "P3 Fate Crystal",
+        },
+        {
+            name = "Frexie",
+            pos = 4,
+            potentials = { 2, 2, 3, 2, 2 },
+            excursion = 3,
+            gear_skill = 3,
+            core = "Speed/Attack",
+            antique = "P3 Fate Crystal",
+        },
+        {
+            name = "Kassy",
+            pos = 5,
+            potentials = { 2, 2, 3, 2, 2 },
+            excursion = 2,
+            gear_skill = 3,
+            core = "Attack/Attack",
+            antique = "P3 Fate Crystal",
+        },
+        {
+            name = "Sivney",
+            pos = 6,
+            potentials = { 2, 2, 3, 2, 2 },
+            excursion = 4,
+            gear_skill = 3,
+            core = "Speed/Attack",
+            antique = "P3 Fate Crystal",
+        },
+    },
     servant = {
         name = "Hunter",
         UC = 100,
@@ -265,17 +565,92 @@ local TeamEoT = {
 
 local TeamPW = {
     girls = {
-		{name = "Angelica", pos = 1, potentials = {2,2,3,2,2}, excursion = 2, gear_skill = 3, core = "Attack/Attack", antique = "P3 The Wings of Icarus",},
-		{name = "Angelica", pos = 2, potentials = {2,2,3,2,2}, excursion = 2, gear_skill = 3, core = "Attack/Attack", antique = "P3 The Wings of Icarus",},
-		{name = "Linky", pos = 3, potentials = {2,2,3,2,2}, excursion = 3, gear_skill = 3, core = "Attack/Attack", antique = "P3 Fate Crystal",},
-		{name = "Frexie", pos = 4, potentials = {2,2,3,2,2}, excursion = 3, gear_skill = 3, core = "Speed/Attack", antique = "P3 Fate Crystal",},
-		{name = "Kassy", pos = 5, potentials = {2,2,3,2,2}, excursion = 2, gear_skill = 3, core = "Attack/Attack", antique = "P3 Fate Crystal",},
-		{name = "Sivney", pos = 6, potentials = {2,2,3,2,2}, excursion = 4, gear_skill = 3, core = "Speed/Attack", antique = "P3 Fate Crystal",}},
+        {
+            name = "Angelica",
+            pos = 1,
+            potentials = { 2, 2, 3, 2, 2 },
+            excursion = 2,
+            gear_skill = 3,
+            core = "Attack/Attack",
+            antique = "P3 The Wings of Icarus",
+        },
+        {
+            name = "Angelica",
+            pos = 2,
+            potentials = { 2, 2, 3, 2, 2 },
+            excursion = 2,
+            gear_skill = 3,
+            core = "Attack/Attack",
+            antique = "P3 The Wings of Icarus",
+        },
+        {
+            name = "Linky",
+            pos = 3,
+            potentials = { 2, 2, 3, 2, 2 },
+            excursion = 3,
+            gear_skill = 3,
+            core = "Attack/Attack",
+            antique = "P3 Fate Crystal",
+        },
+        {
+            name = "Frexie",
+            pos = 4,
+            potentials = { 2, 2, 3, 2, 2 },
+            excursion = 3,
+            gear_skill = 3,
+            core = "Speed/Attack",
+            antique = "P3 Fate Crystal",
+        },
+        {
+            name = "Kassy",
+            pos = 5,
+            potentials = { 2, 2, 3, 2, 2 },
+            excursion = 2,
+            gear_skill = 3,
+            core = "Attack/Attack",
+            antique = "P3 Fate Crystal",
+        },
+        {
+            name = "Sivney",
+            pos = 6,
+            potentials = { 2, 2, 3, 2, 2 },
+            excursion = 4,
+            gear_skill = 3,
+            core = "Speed/Attack",
+            antique = "P3 Fate Crystal",
+        },
+    },
     servant = {
         name = "Hunter",
         UC = 100,
     },
-	god_skills = {20210005,20210010,20210015,20210020,20210025,20210030,20210034,20210038,20210042,20210047,20210052,20210056,20210062,20210069,20210074,20210079,20210087,20210095,20210082,20210090,20210098,20210103,20210111,20210106,20210114}, -- All
+    god_skills = {
+        20210005,
+        20210010,
+        20210015,
+        20210020,
+        20210025,
+        20210030,
+        20210034,
+        20210038,
+        20210042,
+        20210047,
+        20210052,
+        20210056,
+        20210062,
+        20210069,
+        20210074,
+        20210079,
+        20210087,
+        20210095,
+        20210082,
+        20210090,
+        20210098,
+        20210103,
+        20210111,
+        20210106,
+        20210114,
+    }, -- All
     guild_skills = GUILD_1ST_PAGE,
 }
 
@@ -313,8 +688,6 @@ print(get_report(report))
 --Storm			200801			The damage dealt to the enemies will be increased by 30%, but the heal effect of your Girls will be reduced by 75%
 --Cloudy		200901			During battle, all damage received by enemies will increase by 50% during odd number rounds and reduce by 50% during even number rounds.
 --Blizzard		201001,201002	When the Basic Attacks or Active skills of your girls don't trigger Crit, the damage will be reduced by 30%; But if they do, the damage will be increased by 30%
-
-
 
 --Sanctuary skills
 --Quench			11101			Increases your girls' Attack by 10%

@@ -234,9 +234,9 @@ function PvP_params(tA, tB)
     }
 end
 
-function PvE_params(tA, tB, quiet)
+function PvE_params(tA, tB, type, quiet)
     local data = {}
-    data.battle_type = xyd.ReportBattleType.NORMAL
+    data.battle_type = type or xyd.ReportBattleType.NORMAL
     --data.battle_type = xyd.ReportBattleType.GUILD_BOSS
     --data.battle_type = xyd.ReportBattleType.TRIAL_NEW
 
@@ -292,7 +292,7 @@ function PvE_params(tA, tB, quiet)
         petB = petB,
         guildSkillsA = tA.guild_skills,
         guildSkillsB = tB.guild_skills or {},
-        god_skills = tA.god_skills or {},
+        god_skills = tA.god_skills or tB.god_skills or {},
         weather = tA.weather or {},
         battleID = 0,
         random_seed = 0,
@@ -301,9 +301,82 @@ end
 
 function createReport(params, random_seed)
     params.random_seed = random_seed
+    params.isSweep = true
     local reporter = BattleCreateReport.new(params)
     reporter:run()
-    return reporter:getReport()
+
+    local report = {
+        seed = random_seed,
+        isWin = reporter:isWin(),
+        total_round = xyd.Battle.round,
+        total = reporter:getTotalHarm(),
+        hurts = {},
+        die_round = {},
+        die_info = reporter:getDieInfo(),
+        hp = {},
+    }
+
+    for i, v in ipairs(xyd.Battle.teamA) do
+        table.insert(report.hurts, {
+            hurt = v.hurt_,
+            heal = v.heal_,
+            pos = v:getPos(),
+        })
+
+        if v:isDeath() then
+            table.insert(report.die_round, {
+                pos = v:getPos(),
+                round = v:getDieRound(),
+            })
+        end
+
+        table.insert(report.hp, {
+            pos = v:getPos(),
+            hp = math.ceil(100 * v:getHpPercent()),
+            true_hp = math.ceil(v:getHp()),
+        })
+    end
+
+    for i, v in ipairs(xyd.Battle.teamB) do
+        table.insert(report.hurts, {
+            hurt = v.hurt_,
+            heal = v.heal_,
+            pos = v:getPos(),
+        })
+
+        if v:isDeath() then
+            table.insert(report.die_round, {
+                pos = v:getPos(),
+                round = v:getDieRound(),
+            })
+        end
+
+        table.insert(report.hp, {
+            pos = v:getPos(),
+            hp = math.ceil(100 * v:getHpPercent()),
+            true_hp = math.ceil(v:getHp()),
+        })
+    end
+
+    for i, v in ipairs(xyd.Battle.teamPet) do
+        table.insert(report.hurts, {
+            hurt = v.hurt_,
+            heal = v.heal_,
+            pos = v:getPos(),
+        })
+    end
+
+    if xyd.Battle.god then
+        local god = xyd.Battle.god
+
+        table.insert(report.hurts, {
+            pos = god:getPos(),
+            hurt = god.hurt_,
+            heal = god.heal_,
+        })
+    end
+
+    return report
 end
 
 function print_girls(params)

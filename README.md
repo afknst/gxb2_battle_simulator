@@ -20,9 +20,7 @@ To create a soft link, for example: `ln -s <DECOMPILED CODE/src/app> <HERE/app>`
 
 ## Dependencies
 [Lua](https://www.lua.org) and [cjson](https://www.kyne.com.au/~mark/software/lua-cjson.php) are required by the original code.   
-For multiprocessing, we use a [Python](https://www.python.org) wrapper with the following packages: [pexpect](https://github.com/pexpect/pexpect) and [numpy](https://numpy.org).
-
-We may use these packages as well in the future: [sqlite](https://www.sqlite.org/index.html), [lsqlite3](http://lua.sqlite.org/index.cgi/ticket), and [pandas](https://pandas.pydata.org).  
+For multiprocessing, we use a [Python](https://www.python.org) wrapper with the following packages: [pexpect](https://github.com/pexpect/pexpect), [numpy](https://numpy.org), [sqlite](https://www.sqlite.org/index.html), [lsqlite3](http://lua.sqlite.org/index.cgi/ticket), and [pandas](https://pandas.pydata.org).  
 
 ## Examples
 Copy the scripts you want to run from [`examples`](https://github.com/afknst/gxb2_battle_simulator/blob/main/examples) to the project's home directory, or create your own script.

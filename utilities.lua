@@ -1,4 +1,10 @@
-PREFIX = os.date("[%Y_%m_%d][%H_%M_%S]")
+local sqlite3 = require("lsqlite3")
+local db = sqlite3.open("data.sqlite3")
+db:busy_timeout(233)
+
+function submit(cmd)
+    db:exec(cmd)
+end
 
 function repeat_char(char, times)
     local s = ""
@@ -23,15 +29,12 @@ function save(_string, _file)
     io.close(output)
 end
 
-function init(seed, ind)
+function init(seed)
     seed = seed or os.time()
     seed = math.randomseed(seed)
     seed = math.random()
     seed = math.random()
     seed = math.random()
-    if ind then
-        PREFIX = PREFIX .. "[" .. ind .. "]"
-    end
 end
 
 function get_seeds(M)
