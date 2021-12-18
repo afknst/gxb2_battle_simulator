@@ -15,34 +15,34 @@ local season = 2 -- 1 or 2, check 6-1, Phoenix = 1, Hexa = 2
 io.write("Enter stage 6-10: ")
 local stage = io.read("*n") -- wait for number input. 6-10
 local options = {
-	{name = "Nephilim", lv = 330, awake = 5, potentials = {1,3,3,1,2,}, travel = 0, gear_skill = 0, equips = {1066,2266,3066,4266,5750,6365,7193},},
-	{name = "Angelica", lv = 330, awake = 5, potentials = {2,2,3,2,2,}, travel = 3002, gear_skill = 3, equips = {1369,2369,3369,4369,5749,64423,7212},},
-	{name = "Izanami", lv = 330, awake = 5, potentials = {1,1,3,1,2,}, travel = 3004, gear_skill = 3, equips = {1569,2569,3569,4569,5754,64781,7191},},
-	{name = "Sivney", lv = 330, awake = 5, potentials = {1,3,3,1,2,}, travel = 3004, gear_skill = 3, equips = {1569,2569,3569,4569,5754,64362,7211},},
-	{name = "Estel", lv = 330, awake = 5, potentials = {2,2,3,2,2,}, travel = 2103, gear_skill = 0, equips = {1066,2066,3266,4066,5749,64901,7171},},
-	{name = "Kassy", lv = 330, awake = 5, potentials = {3,1,3,3,2,}, travel = 2103, gear_skill = 3, equips = {1468,2468,3468,4468,5654,64361,7222},},
-	{name = "Vivian", lv = 330, awake = 5, potentials = {1,3,1,1,2,}, travel = 0, gear_skill = 0, equips = {1065,2066,3065,4066,5652,6412,7185},},
-	{name = "Blair", lv = 330, awake = 5, potentials = {2,2,3,2,2,}, travel = 3002, gear_skill = 0, equips = {1466,2066,3066,4066,5749,6706,7188},},
-	{name = "Diana", lv = 330, awake = 5, potentials = {2,2,3,2,2,}, travel = 3002, gear_skill = 0, equips = {1266,2065,3066,4065,5749,64481,0},},
-	{name = "Kassy", lv = 250, awake = 0, potentials = {0,0,0,0,0}, travel = 0, gear_skill = 0, equips = {1066,2466,3066,4466,5642,6362,0},},
-	{name = "Linky", lv = 250, awake = 0, potentials = {0,0,0,0,0}, travel = 0, gear_skill = 0, equips = {1065,2066,3065,4066,5660,6454,7084},},
-	{name = "Frexie", lv = 290, awake = 3, potentials = {1,3,3,0,0,}, travel = 1505, gear_skill = 3, equips = {1469,2469,3469,4469,5652,6364,7220},},
+	{name = "Nephilim", pos = 1, lv = 330, potentials = {1,3,3,1,2,}, travel = 2901, ex_skills = {1,1,0,5,}, gear_skill = 0, equips = {1066,2266,3066,4266,5750,6365,7193},},
+	{name = "Angelica", pos = 2, lv = 330, potentials = {2,2,3,2,2,}, travel = 3002, ex_skills = {5,4,5,5,}, gear_skill = 3, equips = {1369,2369,3369,4369,5749,64423,7212},},
+	{name = "Izanami", pos = 3, lv = 330, potentials = {3,1,3,3,2,}, travel = 3004, ex_skills = {5,2,5,0,}, gear_skill = 3, equips = {1569,2569,3569,4569,5754,64781,7191},},
+	{name = "Apate", pos = 4, lv = 330, potentials = {2,2,3,2,2,}, travel = 0, ex_skills = {5,5,0,0,}, gear_skill = 0, equips = {1066,2066,3066,4066,5651,6700,7158},},
+	{name = "Teresa", pos = 6, lv = 330, potentials = {1,1,3,1,2,}, travel = 1505, ex_skills = {5,0,3,3,}, gear_skill = 0, equips = {1065,2066,3065,4066,5652,6724,7186},},
+	{name = "Sivney", pos = 1, lv = 330, potentials = {3,3,3,3,2,}, travel = 3004, ex_skills = {0,3,5,5,}, gear_skill = 3, equips = {1569,2569,3569,4569,5754,64362,7211},},
+	{name = "Estel", pos = 2, lv = 330, potentials = {2,2,3,2,2,}, travel = 3002, ex_skills = {5,2,3,5,}, gear_skill = 0, equips = {1066,2066,3266,4066,5749,64481,7171},},
+	{name = "Vivian", pos = 3, lv = 330, potentials = {1,3,1,1,2,}, travel = 0, ex_skills = {}, gear_skill = 0, equips = {1065,2066,3065,4066,5652,6412,7185},},
+	{name = "Blair", pos = 4, lv = 330, potentials = {2,2,3,2,2,}, travel = 3002, ex_skills = {3,3,3,3,}, gear_skill = 0, equips = {1466,2066,3066,4066,5749,6706,7188},},
+	{name = "Kassy", pos = 5, lv = 330, potentials = {2,2,3,2,2,}, travel = 2103, ex_skills = {0,1,0,5,}, gear_skill = 3, equips = {1469,2469,3469,4469,5654,64361,7222},},
+	{name = "Holly", pos = 6, lv = 330, potentials = {1,3,3,1,2,}, travel = 2901, ex_skills = {5,2,5,5,}, gear_skill = 1, equips = {1269,2269,3269,4269,5764,6362,7178},},
+	{name = "Monica", pos = 1, lv = 330, potentials = {1,3,3,1,2,}, travel = 2901, ex_skills = {3,1,5,2,}, gear_skill = 0, equips = {1066,2266,3066,4266,5750,67181,7204},},
+	{name = "Diana", pos = 3, lv = 330, potentials = {2,2,3,2,2,}, travel = 2103, ex_skills = {5,2,5,0,}, gear_skill = 0, equips = {1266,2065,3066,4065,5749,6730,0},},
+	{name = "Frexie", pos = 4, lv = 290, awake = 3, potentials = {1,3,3,0,0,}, travel = 0, ex_skills = {0,2,0,2,}, gear_skill = 0, equips = {1066,2066,3466,4066,5652,64901,7220},},
+	{name = "Sivney", pos = 6, lv = 200, awake = 0, potentials = {0,0,0,0,0}, travel = 0, ex_skills = {}, gear_skill = 0, equips = {1064,2064,3065,4065,5652,6430,0},},
 }
 local lead = {
-	{name = "Apate", lv = 330, awake = 5, potentials = {3,2,3,3,2,}, travel = 3004, gear_skill = 3, equips = {1369,2369,3369,4369,5749,64362,7199},},
-	{name = "Apate", lv = 330, awake = 5, potentials = {2,2,3,2,2,}, travel = 0, gear_skill = 0, equips = {1066,2066,3066,4066,5651,6700,7158},},
-	{name = "Fenrir", lv = 330, awake = 5, potentials = {1,1,3,1,2,}, travel = 1505, gear_skill = 0, equips = {1065,2066,3065,4066,5752,6646,7149},},
-}
-local exiled = {
-	{name = "Monica", lv = 330, awake = 5, potentials = {1,3,3,1,2,}, travel = 2601, gear_skill = 0, equips = {1066,2266,3066,4266,5750,67181,7204},},
-	{name = "Holly", lv = 330, awake = 5, potentials = {1,3,3,1,2,}, travel = 2601, gear_skill = 3, equips = {1269,2269,3269,4269,5764,6362,7178},},
-	{name = "Teresa", lv = 330, awake = 5, potentials = {1,1,3,1,2,}, travel = 2601, gear_skill = 0, equips = {1065,2066,3065,4066,5652,6724,7186},},
+	{name = "Apate", pos = 5, lv = 330, potentials = {3,2,3,3,2,}, travel = 3004, ex_skills = {5,5,0,0,}, gear_skill = 3, equips = {1369,2369,3369,4369,5749,64362,7199},},
+	{name = "Fenrir", pos = 2, lv = 330, potentials = {1,1,3,1,2,}, travel = 1505, ex_skills = {0,2,1,1,}, gear_skill = 0, equips = {1065,2066,3065,4066,5752,6646,7149},},
+	{name = "Fenrir", pos = 5, lv = 250, awake = 0, potentials = {0,0,0,0,0}, travel = 0, ex_skills = {1,1,1,1,}, gear_skill = 0, equips = {1064,2065,3064,4065,5657,6676,7180},},
 }
 local pets = {
-	{ name = "Robert", UC = 0, lv = 120 },
-	{ name = "Hunter", UC = 10, lv = 160 },
-	{ name = "Deerling", UC = 75, lv = 180 },
+	{ name = "Kraken", UC = 80, lv = 130 },
+	{ name = "Hunter", UC = 0, lv = 170 },
+	{ name = "Deerling", UC = 0, lv = 180 },
 }
+
+--"season_info":{"count":23,"start_time":1637280000,"buffs":"[[22,2,18],[1,8,25],[9,7,28],[12,11,30],[13,35,32,37,38,36]]"}
 
 local plan = {
 	--400801, --Adrenaline
@@ -67,7 +67,7 @@ local plan = {
 	--404301, --Insufficient Energy
 	--404001, --Invisibility
 	--403801, --Low Morale
-	--401501, --Medical Supply
+	--401501, --Medical Supply, 3 points, Your enemies will regenerate 15% of their Maximum HP at the end of each round.
 	--403601,403602, --Painless
 	--404801, --Phantom Pain NEW
 	--401401, --Poisonous Gas
@@ -84,24 +84,25 @@ local plan = {
 	--401901, --Void Seal
 	--402201, --Well Protected
 	
-	404501,404502, --Stun
+	--https://docs.google.com/spreadsheets/d/1QZQdpU7ka5ghbJiSheAH2Oaf5b9Whm0rOOu2tjH0mw0/edit#gid=1389591561
+    403201,403202, --Infestation Pandemic
     400801, --Adrenaline
-    401201,401202,401203,401204,401205, --Tiredness
-    400701, --Heavy Armor
+    404401, --Energy Potion
     402801, --Scapegoat
-    403401, --Faint
-    402901,402902, --Ultimate Seal
-    401501, --Medical Supply
+    401701, --Regroup
+    400701, --Heavy Armor
     403701, --Poor Health
-    403001, --Blind
-    402501, --Armor Plate
+    403801, --Low Morale
+    401501, --Medical Supply
     403901, --Revenge
-    402001, --Bleed out
-    404601, --Reaper's Curse
-    404101, --Exile
+    403601,403602, --Painless
+    403001, --Blind
+    401801,401802,402701, --Full Attack
     404801, --Phantom Pain
-    404901, --Attack Steal
-    404701,404702, --Bad Call
+    402001, --Bleed out
+    404301, --Insufficient Energy
+    402401, --Thorns
+    404101, --Exile
 }
 
 local opponents = {
@@ -156,10 +157,12 @@ print("\n\nTrying Stage "..stage)
 while (true) do
 
 	shuffle(options)
+	shuffle(lead)
+	shuffle(pets)
 	local team1 = {
 		girls = {
 			put(lead[1], 1),
-			put(exiled[1], 2),
+			put(options[13], 2),
 			put(options[10], 3),
 			put(options[7], 4),
 			put(options[4], 5),
@@ -170,7 +173,7 @@ while (true) do
 	local team2 = {
 		girls = {
 			put(lead[2], 1),
-			put(exiled[2], 2),
+			put(options[14], 2),
 			put(options[11], 3),
 			put(options[8], 4),
 			put(options[5], 5),
@@ -181,7 +184,7 @@ while (true) do
 	local team3 = {
 		girls = {
 			put(lead[3], 1),
-			put(exiled[3], 2),
+			put(options[15], 2),
 			put(options[12], 3),
 			put(options[9], 4),
 			put(options[6], 5),
@@ -191,9 +194,9 @@ while (true) do
 	}
 	
 	local teams = {team1, team2, team3}
-	if (stage == 6 or stage == 8 or stage == 9) then -- 7-3 and 10-3 generally have Fenrir in F1
+	--if (stage == 6 or stage == 8 or stage == 9) then -- 7-3 and 10-3 generally have Fenrir in F1
 		shuffle(teams)
-	end
+	--end
 	battle1 = (fight(PvE_params(teams[1], opponent1), get_seeds(M), false))
 	battle2 = (fight(PvE_params(teams[2], opponent2), get_seeds(M), false))
 	battle3 = (fight(PvE_params(teams[3], opponent3), get_seeds(M), false))
@@ -204,26 +207,35 @@ while (true) do
 		print (teams[2].girls[1].name..teams[2].girls[1].awake..", "..teams[2].girls[2].name..teams[2].girls[2].awake..", "..teams[2].girls[3].name..teams[2].girls[3].awake..", "..teams[2].girls[4].name..teams[2].girls[4].awake..", "..teams[2].girls[5].name..teams[2].girls[5].awake..", "..teams[2].girls[6].name..teams[2].girls[6].awake..", "..teams[2].servant.name)
 		print (teams[3].girls[1].name..teams[3].girls[1].awake..", "..teams[3].girls[2].name..teams[3].girls[2].awake..", "..teams[3].girls[3].name..teams[3].girls[3].awake..", "..teams[3].girls[4].name..teams[3].girls[4].awake..", "..teams[3].girls[5].name..teams[3].girls[5].awake..", "..teams[3].girls[6].name..teams[3].girls[6].awake..", "..teams[3].servant.name)
 		
-		print (battle1.wins.." "..battle2.wins.." "..battle3.wins.."\n")
+		print(battle1.wins.." "..battle2.wins.." "..battle3.wins.."\n")
 		
 		battle4 = nil -- Give the team who lost a chance. Also print how close they were so if no 3 wins, you can choose who is closest and work from there.
 		if (battle1.wins == 0) then
 			battle4 = (fight(PvE_params(teams[1], opponent1), get_seeds(32), false))
 			print(battle4.wins)
 			print(get_report(battle4))
+			print(get_report(battle2))
+			print(get_report(battle3))
 		elseif (battle2.wins == 0) then
 			battle4 = (fight(PvE_params(teams[2], opponent1), get_seeds(32), false))
 			print(battle4.wins)
 			print(get_report(battle4))
+			print(get_report(battle1))
+			print(get_report(battle3))
 		elseif (battle3.wins == 0) then
 			battle4 = (fight(PvE_params(teams[3], opponent1), get_seeds(32), false))
 			print(battle4.wins)
 			print(get_report(battle4))
+			print(get_report(battle1))
+			print(get_report(battle3))
 		end
 		
 		
 		if ((battle1.wins > 0 and battle2.wins > 0 and battle3.wins > 0) or battle4.wins > 0) then
 			print("Win Stage "..stage)
+			print(get_report(battle1))
+			print(get_report(battle2))
+			print(get_report(battle3))
 			os.execute("echo \a")
 			break
 		end
