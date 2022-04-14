@@ -220,6 +220,8 @@ function PvP_params(tA, tB)
 		god_skills = {},
 		battleID = 0,
 		random_seed = 0,
+        chimeBonusA = tA.chime_bonus or {},
+        chimeBonusB = tB.chime_bonus or {},
 	}
 end
 
@@ -263,6 +265,9 @@ function PvE_params(tA, tB, type)
 		weather = tA.weather or {},
 		battleID = 0,
 		random_seed = 0,
+        chimeBonusA = tA.chime_bonus or {},
+        chimeBonusB = tB.chime_bonus or {},
+        shrineId = tA.shrine_id or 0,
 	}
 end
 
