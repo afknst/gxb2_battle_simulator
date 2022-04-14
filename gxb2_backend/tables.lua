@@ -152,6 +152,7 @@ ANTIQUES = {
 	["無序暴徒"] = 6742,
 	["雪舞回風"] = 6748,
 	["深淵落鳥"] = 6754,
+    ["風鳴寰宇"] = 6760,
 	["命運魂晶 P1"] = 64361,
 	["命運魂晶 P2"] = 64362,
 	["命運魂晶 P3"] = 64363,
@@ -206,6 +207,9 @@ ANTIQUES = {
 	["深淵落鳥 P1"] = 67541,
 	["深淵落鳥 P2"] = 67542,
 	["深淵落鳥 P3"] = 67543,
+    ["風鳴寰宇 P1"] = 67601,
+    ["風鳴寰宇 P2"] = 67602,
+    ["風鳴寰宇 P3"] = 67603,
 	["Afterglow"] = 6000,
 	["Chalk"] = 6016,
 	["Stool"] = 6017,
@@ -338,6 +342,7 @@ ANTIQUES = {
 	["Tool of Trade"] = 6742,
 	["Snow Chime"] = 6748,
 	["Raven Scepter"] = 6754,
+    ["Windbringer"] = 6760,
 	["Fate Crystal P1"] = 64361,
 	["Fate Crystal P2"] = 64362,
 	["Fate Crystal P3"] = 64363,
@@ -392,6 +397,9 @@ ANTIQUES = {
 	["Raven Scepter P1"] = 67541,
 	["Raven Scepter P2"] = 67542,
 	["Raven Scepter P3"] = 67543,
+    ["Windbringer P1"] = 67601,
+    ["Windbringer P2"] = 67602,
+    ["Windbringer P3"] = 67603,
 }
 
 CORES = {
@@ -985,4 +993,15 @@ GUILD_FULL = {
 	{ skill_id = 14601, skill_lv = 60 },
 	{ skill_id = 14701, skill_lv = 60 },
 	{ skill_id = 14801, skill_lv = 60 },
+}
+
+CHIME_FULL = {
+    {chime_id = 20001, lev = 100, buffs = {1,1,1,1}}, -- Chime of Cherries
+    {chime_id = 30001, lev = 100, buffs = {1,1,1,1}}, -- Chime of Kittens
+    {chime_id = 40001, lev = 100, buffs = {1,1,1,1}}, -- Chime of the Spectre
+    {chime_id = 40002, lev = 100, buffs = {1,1,1,1}}, -- Chime of Order
+    {chime_id = 40003, lev = 100, buffs = {1,1,1,1}}, -- Chime of Freedom
+    {chime_id = 40004, lev = 100, buffs = {1,1,1,1}}, -- Chime of Faeries
+    {chime_id = 50001, lev = 100, buffs = {1,1,1,1}}, -- Chime of the Abyss
+    {chime_id = 50002, lev = 100, buffs = {1,1,1,1}}, -- Chime of the Heavens
 }
